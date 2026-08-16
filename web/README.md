@@ -46,6 +46,12 @@ This overwrites `src/data/classified.json` with Gemini tags (`gemini:<model>`), 
 provisional keyword seed. A badge in **How it works** shows which classifier is live. The site
 builds and runs before you retag (it ships with the seeded snapshot).
 
+> **Free-tier quota note:** Gemini's free tier allows only ~20 requests, so a full base re-tag
+> (~9 requests at `BATCH=20`) must run in one clean pass — if you hit `RESOURCE_EXHAUSTED` (429),
+> wait for the quota to reset (or use a paid key) and re-run. By design the **base analysis stays
+> as the committed snapshot**; Gemini is used live for the small batches of reviews visitors paste,
+> which stays well within limits.
+
 ## Deploy to Vercel
 1. Push the repo to GitHub.
 2. Vercel → **New Project** → import → set **Root Directory = `web`** (Next.js auto-detected).

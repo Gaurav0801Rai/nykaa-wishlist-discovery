@@ -21,7 +21,9 @@ function loadEnvLocal() {
   }
 }
 
-const BATCH = 12;
+// Larger batches = fewer requests. Gemini's free tier is ~20 requests, so keep
+// the whole corpus under that: 179 items / 20 per batch = ~9 requests.
+const BATCH = 20;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function main() {
@@ -83,7 +85,7 @@ async function main() {
       });
     });
     console.log("ok");
-    await sleep(1200); // polite pacing
+    await sleep(5000); // spread requests out to respect the free-tier rate limit
   }
 
   writeFileSync(join(DATA, "classified.json"), JSON.stringify(out, null, 0), "utf-8");
