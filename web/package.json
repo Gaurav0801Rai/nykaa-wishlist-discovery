@@ -1,0 +1,26 @@
+{
+  "name": "nykaa-wishlist-discovery-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/sync-data.mjs",
+    "dev": "next dev",
+    "sync-data": "node scripts/sync-data.mjs",
+    "retag": "node scripts/retag-corpus.mjs",
+    "prebuild": "node scripts/sync-data.mjs",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.4"
+  }
+}

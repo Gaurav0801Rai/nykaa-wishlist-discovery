@@ -1,0 +1,30 @@
+# ---- secrets (NEVER commit) ----
+.env
+.env.*
+!.env.example
+!**/.env.local.example
+**/.env.local
+web/.env.local
+
+# ---- node / next ----
+node_modules/
+web/node_modules/
+web/.next/
+web/out/
+**/*.tsbuildinfo
+web/next-env.d.ts
+
+# ---- python ----
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ---- project caches / logs ----
+cache/
+logs/
+scratchpad/
+
+# ---- os ----
+.DS_Store
+Thumbs.db

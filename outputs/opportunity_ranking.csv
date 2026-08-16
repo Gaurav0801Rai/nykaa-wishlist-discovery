@@ -1,0 +1,14 @@
+rank,blocker_code,primary_count,primary_pct_of_179,external_count,cross_category_reach,opportunity_score,evidence_strength
+1,trust_authenticity,65,36.3,1,5,80.5,nykaa_strong+external
+2,quality_doubt,45,25.1,0,4,57.0,nykaa_strong
+3,price_wait,38,21.2,1,3,47.5,nykaa_strong+external
+4,confidence_validation_gap,29,16.2,0,3,38.0,nykaa_strong
+5,fit_size_doubt,23,12.8,4,3,34.0,nykaa_strong+external
+6,within_category_compare_gap,18,10.1,1,3,27.5,nykaa_strong+external
+7,occasion_timing,13,7.3,0,5,28.0,nykaa_moderate
+8,delivery_return_friction,12,6.7,0,2,18.0,nykaa_moderate
+9,endless_search_deferral,7,3.9,5,2,15.5,nykaa_moderate+external
+10,size_or_stock_gone,4,2.2,1,2,10.5,nykaa_thin+external
+11,context_loss,3,1.7,5,0,5.5,nykaa_thin+external
+12,choice_overload,0,0.0,13,0,6.5,external_only+external
+13,cross_sell_miss,0,0.0,1,0,0.5,external_only+external

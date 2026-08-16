@@ -1,0 +1,12 @@
+blocker_code,apparel_ethnic,footwear,watches,sunglasses,bags,belts,jewellery,makeup_beauty,unknown_general,total
+trust_authenticity,11,4,1,0,1,0,0,2,46,65
+quality_doubt,10,1,0,0,3,0,0,1,30,45
+price_wait,4,1,0,0,0,0,0,1,32,38
+confidence_validation_gap,3,0,1,0,0,0,0,1,24,29
+fit_size_doubt,9,3,0,0,0,0,0,1,10,23
+within_category_compare_gap,2,1,0,0,0,0,0,1,14,18
+occasion_timing,2,1,1,1,0,0,0,1,7,13
+delivery_return_friction,0,0,0,0,1,0,0,1,10,12
+endless_search_deferral,2,0,0,0,0,0,0,2,3,7
+size_or_stock_gone,1,0,0,0,1,0,0,0,2,4
+context_loss,0,0,0,0,0,0,0,0,3,3
