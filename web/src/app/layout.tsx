@@ -30,18 +30,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <span className="brand-dot" />
               <span>Nykaa Fashion · <span className="serif">Wishlist Discovery</span></span>
             </a>
-            <nav className="nav">
-              <span className="muted small">Part 1 · Wishlist→Purchase</span>
-            </nav>
           </div>
         </header>
         {children}
         <footer className="site-footer">
-          <div className="container">
-            Part 1 · AI-Powered Discovery Engine — discovering the wishlist→purchase blocker for
-            Nykaa Fashion, across categories, with no monetary incentives. Percentages come from
-            collected user feedback (Nykaa reviews + Reddit &amp; community wishlist discussion).
-          </div>
+          <div className="container">Nykaa Fashion · Wishlist Discovery Engine</div>
         </footer>
       </body>
     </html>

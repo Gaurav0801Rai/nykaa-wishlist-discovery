@@ -3042,6 +3042,30 @@
     "tagging_method": "heuristic_v0"
   },
   {
+    "id": "community_e69b4f702248",
+    "source": "community",
+    "text": "there's a lot more looking and almost no purchasing",
+    "blocker_codes": [
+      "endless_search_deferral"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "there's a lot more looking and almost no purchasing",
+    "rating": null,
+    "tagging_method": "heuristic_v0"
+  },
+  {
+    "id": "community_4c4df5cf3287",
+    "source": "community",
+    "text": "It's an endless rabbit hole that can never be exhausted, and I think that's part of the comfort I get from it",
+    "blocker_codes": [
+      "endless_search_deferral"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "It's an endless rabbit hole that can never be exhausted, and I think that's part of the comfort I get from it",
+    "rating": null,
+    "tagging_method": "heuristic_v0"
+  },
+  {
     "id": "community_2583d80567a3",
     "source": "community",
     "text": "I'm probably looking at stuff that's even more expensive than I would otherwise to kind of be in the presence of something nice or beautiful",
@@ -3050,6 +3074,52 @@
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "I'm probably looking at stuff that's even more expensive than I would otherwise to kind of be in the presence of something nice or beautiful",
+    "rating": null,
+    "tagging_method": "heuristic_v0"
+  },
+  {
+    "id": "community_651cf1809416",
+    "source": "community",
+    "text": "Almost always, the thrill of the hunt, so to speak, is better than the kill",
+    "blocker_codes": [
+      "endless_search_deferral"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "Almost always, the thrill of the hunt, so to speak, is better than the kill",
+    "rating": null,
+    "tagging_method": "heuristic_v0"
+  },
+  {
+    "id": "community_2fafb28cc195",
+    "source": "community",
+    "text": "I grew impatient as the process took 20 minutes and my husband was still undecided.",
+    "blocker_codes": [],
+    "category_signal": "unknown_general",
+    "supporting_quote": "I grew impatient as the process took 20 minutes and my husband was still undecided.",
+    "rating": null,
+    "tagging_method": "heuristic_v0"
+  },
+  {
+    "id": "community_b552b8dd9c6f",
+    "source": "community",
+    "text": "I just quit the process.",
+    "blocker_codes": [
+      "endless_search_deferral"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "I just quit the process.",
+    "rating": null,
+    "tagging_method": "heuristic_v0"
+  },
+  {
+    "id": "community_3e071f79bf96",
+    "source": "community",
+    "text": "I was of the notion how many shades of jeans could there be? a maximum of 10?",
+    "blocker_codes": [
+      "choice_overload"
+    ],
+    "category_signal": "apparel_ethnic",
+    "supporting_quote": "I was of the notion how many shades of jeans could there be?",
     "rating": null,
     "tagging_method": "heuristic_v0"
   },
@@ -3113,6 +3183,18 @@
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "The wishlist that was supposed to be your shortlist now feels cluttered and overwhelming.",
+    "rating": null,
+    "tagging_method": "heuristic_v0"
+  },
+  {
+    "id": "community_b24bae58d257",
+    "source": "community",
+    "text": "Cognitive load increases, and worst of all, intent to purchase often vanishes.",
+    "blocker_codes": [
+      "choice_overload"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "Cognitive load increases, and worst of all, intent to purchase often vanishes.",
     "rating": null,
     "tagging_method": "heuristic_v0"
   }

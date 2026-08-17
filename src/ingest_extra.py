@@ -57,14 +57,11 @@ def load_web_voice() -> list[dict]:
 
 
 def main() -> int:
-    candidates = load_reddit() + load_web_voice()
-    kept, dropped = [], 0
-    seen = set()
-    for it in candidates:
-        keep, _signals, _reason = classify_relevance(it)
-        if not keep or it["id"] in seen:
-            dropped += 1
-            continue
+    kept, dropped, seen = [], 0, set()
+
+    def add(it):
+        if it["id"] in seen:
+            return
         seen.add(it["id"])
         kept.append({
             "id": it["id"],
@@ -73,10 +70,23 @@ def main() -> int:
             "rating": it.get("rating"),
         })
 
+    # Reddit: apply the same Stage-2 relevance filter as the rest of the corpus.
+    for it in load_reddit():
+        keep, _signals, _reason = classify_relevance(it)
+        if keep:
+            add(it)
+        else:
+            dropped += 1
+
+    # Open-web quotes were ALREADY hand-curated as wishlist-decision voice when
+    # collected -> include all (do not re-filter with keywords).
+    for it in load_web_voice():
+        add(it)
+
     (DATA / "extra_raw.json").write_text(
         json.dumps(kept, ensure_ascii=False, indent=2), encoding="utf-8")
     from collections import Counter
-    print(f"Candidates {len(candidates)} -> kept {len(kept)} relevant (dropped {dropped}).")
+    print(f"Kept {len(kept)} extra items (reddit dropped {dropped} as off-topic; all web voice kept).")
     print("By source:", dict(Counter(k["source"] for k in kept)))
     print("-> data/extra_raw.json (untagged; Gemini will tag with the base corpus)")
     return 0

@@ -498,9 +498,45 @@
     "rating": "44"
   },
   {
+    "id": "community_e69b4f702248",
+    "source": "community",
+    "text": "there's a lot more looking and almost no purchasing",
+    "rating": null
+  },
+  {
+    "id": "community_4c4df5cf3287",
+    "source": "community",
+    "text": "It's an endless rabbit hole that can never be exhausted, and I think that's part of the comfort I get from it",
+    "rating": null
+  },
+  {
     "id": "community_2583d80567a3",
     "source": "community",
     "text": "I'm probably looking at stuff that's even more expensive than I would otherwise to kind of be in the presence of something nice or beautiful",
+    "rating": null
+  },
+  {
+    "id": "community_651cf1809416",
+    "source": "community",
+    "text": "Almost always, the thrill of the hunt, so to speak, is better than the kill",
+    "rating": null
+  },
+  {
+    "id": "community_2fafb28cc195",
+    "source": "community",
+    "text": "I grew impatient as the process took 20 minutes and my husband was still undecided.",
+    "rating": null
+  },
+  {
+    "id": "community_b552b8dd9c6f",
+    "source": "community",
+    "text": "I just quit the process.",
+    "rating": null
+  },
+  {
+    "id": "community_3e071f79bf96",
+    "source": "community",
+    "text": "I was of the notion how many shades of jeans could there be? a maximum of 10?",
     "rating": null
   },
   {
@@ -531,6 +567,12 @@
     "id": "community_ae7373efd632",
     "source": "community",
     "text": "The wishlist that was supposed to be your shortlist now feels cluttered and overwhelming.",
+    "rating": null
+  },
+  {
+    "id": "community_b24bae58d257",
+    "source": "community",
+    "text": "Cognitive load increases, and worst of all, intent to purchase often vanishes.",
     "rating": null
   }
 ]
