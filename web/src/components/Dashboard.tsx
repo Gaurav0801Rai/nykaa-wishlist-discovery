@@ -28,6 +28,20 @@ export default function Dashboard({
   const maxCount = Math.max(...agg.map((a) => a.count), 1);
   const ranked = useMemo(() => lens2Rank(agg), [agg]);
   const sources = Object.entries(methodology.sources).sort((a, b) => b[1] - a[1]);
+  // "A, B, C and D" — source names only, no per-source counts.
+  const PROSE: Record<string, string> = {
+    "Play Store": "the Play Store",
+    "App Store": "the App Store",
+    Reddit: "Reddit",
+    "Web forums": "review forums",
+    Discussions: "Q&A sites",
+    "Community & web": "community discussions",
+  };
+  const sourceSentence = useMemo(() => {
+    const names = sources.map(([s]) => PROSE[s] ?? s.toLowerCase());
+    if (names.length <= 1) return names[0] ?? "";
+    return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+  }, [sources]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
@@ -113,10 +127,9 @@ export default function Dashboard({
 
       <section>
         <div className="card pad muted small">
-          <strong>About the data.</strong> {methodology.user_feedback} pieces of real user feedback:
-          {" "}{methodology.nykaa_items} Nykaa app-store reviews and forum posts, plus {methodology.added_items}{" "}
-          Reddit and community discussions about wishlist shopping. Each one was read and tagged
-          against 15 possible blockers, across every product category.
+          <strong>About the data.</strong> {methodology.user_feedback} pieces of real user feedback
+          from {sourceSentence}. Each one was read and tagged against 15 possible blockers, across
+          every product category.
         </div>
       </section>
     </div>
