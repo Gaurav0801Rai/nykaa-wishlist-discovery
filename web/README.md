@@ -27,9 +27,9 @@ Two server-only routes; keys read on the server only, never exposed to the brows
 - **`/api/analyze`** — reads **`GEMINI_API_KEY`**, calls Gemini (`gemini-3.5-flash` by
   default; override with `GEMINI_MODEL`), returns only `{ count, results }`. Defensive JSON
   parsing (validates blocker codes against the taxonomy). Powers the live "Add data" analyzer.
-- **`/api/chat`** — reads **`GROQ_API_KEY`** (Groq, `llama-3.3-70b-versatile` by default;
-  override with `GROQ_MODEL` — set a current model from your Groq console), returns `{ reply }`.
-  Powers the **"Ask the data"** chatbot. It is grounded in this study's corpus + the Part-1
+- **`/api/chat`** — reads **`GROQ_API_KEY`** (Groq, `openai/gpt-oss-20b` by default; override
+  with `GROQ_MODEL`, e.g. `openai/gpt-oss-120b` for higher quality), returns `{ reply }`.
+  Powers the **"Query Assistant"** chatbot. It is grounded in this study's corpus + the Part-1
   discovery questions (see `src/lib/knowledge.ts`), answers free-form questions too, and is
   told to cite real numbers and flag thin-data questions honestly.
 

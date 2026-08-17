@@ -19,7 +19,7 @@ const TABS: { id: Tab; label: string }[] = [
   { id: "lens1", label: "Lens 1 · What users tell us" },
   { id: "lens2", label: "Lens 2 · Where the opportunity is" },
   { id: "questions", label: "Discovery Questions" },
-  { id: "ask", label: "Ask the data" },
+  { id: "ask", label: "Query Assistant" },
   { id: "how", label: "How it works" },
 ];
 

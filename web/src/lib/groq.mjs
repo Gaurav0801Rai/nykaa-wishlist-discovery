@@ -1,7 +1,10 @@
 // SERVER-ONLY. Groq chat client for the "Ask" chatbot. Reads GROQ_API_KEY only
 // on the server; never exposed to the browser. OpenAI-compatible endpoint.
 
-const DEFAULT_MODEL = "llama-3.3-70b-versatile";
+// Groq's older Llama chat models were deprecated; current production
+// general-purpose models are openai/gpt-oss-20b (fast) and openai/gpt-oss-120b
+// (higher quality). Override with GROQ_MODEL.
+const DEFAULT_MODEL = "openai/gpt-oss-20b";
 
 export class GroqError extends Error {
   constructor(message, status = 500) {
