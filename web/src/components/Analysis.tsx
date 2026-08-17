@@ -4,8 +4,9 @@ import { useState } from "react";
 import type { ClassifiedItem, Methodology } from "@/lib/types";
 import ChatBot from "./ChatBot";
 import Dashboard from "./Dashboard";
+import Analyzer from "./Analyzer";
 
-type View = "ask" | "dashboard";
+type View = "ask" | "dashboard" | "analyzer";
 
 export default function Analysis({
   base,
@@ -27,12 +28,16 @@ export default function Analysis({
         <button className="tab" aria-selected={view === "dashboard"} onClick={() => setView("dashboard")}>
           Dashboard
         </button>
+        <button className="tab" aria-selected={view === "analyzer"} onClick={() => setView("analyzer")}>
+          Live Analyzer
+        </button>
       </div>
 
       {view === "ask" && <ChatBot />}
       {view === "dashboard" && (
         <Dashboard items={base} methodology={methodology} taggingBadge={taggingBadge} />
       )}
+      {view === "analyzer" && <Analyzer />}
     </div>
   );
 }
