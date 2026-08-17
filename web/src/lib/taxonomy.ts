@@ -13,9 +13,9 @@ export const BLOCKERS: Record<string, BlockerMeta> = {
   choice_overload: { label: "Choice overload", blurb: "Too many options to decide between." },
   context_loss: { label: "Context loss / wishlist visibility", blurb: "Forgot why an item was saved; can't sort or find it in the wishlist." },
   within_category_compare_gap: { label: "Comparison gap", blurb: "Hard to compare similar saved items side by side." },
-  confidence_validation_gap: { label: "Confidence / validation gap", blurb: "Not enough proof (reviews, photos, opinions) to commit." },
+  confidence_validation_gap: { label: "Confidence / validation gap", blurb: "Wants reassurance from others before committing." },
   endless_search_deferral: { label: "Endless search / deferral", blurb: "Keeps browsing and saving instead of deciding." },
-  cross_sell_miss: { label: "Cross-sell miss", blurb: "No 'complete the look' / pairing help to close the buy." },
+  cross_sell_miss: { label: "Cross-sell miss", blurb: "Nothing shown alongside items already saved." },
   occasion_timing: { label: "Occasion / timing", blurb: "Save tied to an event; intent fades once it passes." },
   price_wait: { label: "Price wait", blurb: "Waiting for a sale / price drop; feels too expensive." },
   fit_size_doubt: { label: "Fit / size doubt", blurb: "Unsure about size or fit (clothing/footwear)." },
@@ -23,7 +23,7 @@ export const BLOCKERS: Record<string, BlockerMeta> = {
   size_or_stock_gone: { label: "Size / stock gone", blurb: "Item sold out or size unavailable before deciding." },
   quality_doubt: { label: "Quality doubt", blurb: "Unsure the quality/material is worth it." },
   trust_authenticity: { label: "Trust / authenticity", blurb: "Worried the item is fake or not as described." },
-  delivery_return_friction: { label: "Delivery / return friction", blurb: "Return risk / fulfilment worry deters buying." },
+  delivery_return_friction: { label: "Delivery / return friction", blurb: "Problems with shipping, pickups or refunds after ordering." },
   bookmarking_no_intent: { label: "Bookmarking, no intent", blurb: "Saved as a mood board, never meant to buy." },
 };
 

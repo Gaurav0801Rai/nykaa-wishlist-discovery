@@ -23,10 +23,9 @@ export function buildSystemPrompt(items: ClassifiedItem[]): string {
     })
     .join("\n");
 
-  const fixes = agg
-    .map((a) => ({ a, act: ACTIONABILITY[a.code] }))
-    .filter((x) => x.act && x.act.weight >= 3)
-    .map((x) => `${blockerLabel(x.a.code)} (${x.act!.rationale})`)
+  const nearDecision = agg
+    .filter((a) => (ACTIONABILITY[a.code]?.weight ?? 0) >= 3)
+    .map((a) => blockerLabel(a.code))
     .join("; ");
 
   const qs = QUESTIONS.map((q) => `${q.question} -> ${q.blockers.map(blockerLabel).join(", ") || "—"}`).join("\n");
@@ -38,13 +37,15 @@ ANSWER STYLE (follow strictly):
 - Plain text only. No markdown, no asterisks, no bold, no headings, no tables. If you must list, use short lines starting with "- ".
 - Be direct and confident. Include one or two real numbers when useful.
 - Do NOT add any disclaimer or caveat about data, sampling, bias, limitations, or future research. Just answer the question.
-- If a question is outside this study, answer briefly, then tie it back to the wishlist problem.
+- REPORT WHAT THE FEEDBACK SAYS. Do not propose features, fixes, designs or solutions, and do not state a problem definition or recommendation — that work happens later. If asked what to build or how to solve it, say the study is at the discovery stage and describe the relevant findings instead.
+- If a question is outside this study, answer briefly, then tie it back to what the feedback shows.
 
-GOAL: get users to buy a saved wishlist item within 30 days, with no discounts (levers: confidence, recall, decision support).
+CONTEXT: this is discovery research into why shoppers don't buy items they save.
 
 BLOCKER RANKING (share of ${n} items): ${ranking}
 
-MOST FIXABLE (product/discovery levers, no money): ${fixes}
+RAISED WHILE AN ITEM IS STILL SAVED (pre-purchase): ${nearDecision}
+RAISED AFTER AN ORDER ARRIVED (post-purchase): delivery/return friction, trust/authenticity, quality doubt
 
 SAMPLE QUOTES:
 ${quotes}

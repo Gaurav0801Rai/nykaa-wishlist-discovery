@@ -1,5 +1,6 @@
-// Dashboard content model: group blockers into types (like Blinkit's cluster
-// types), plus the honest key-insights and user-needs shown on the dashboard.
+// Dashboard content model: blocker type grouping and the observations shown
+// alongside the ranking. Observations stay descriptive — they report what the
+// feedback contains, without prescribing fixes or stating a problem definition.
 
 export const BLOCKER_TYPE: Record<string, string> = {
   choice_overload: "Decision friction",
@@ -13,10 +14,10 @@ export const BLOCKER_TYPE: Record<string, string> = {
   trust_authenticity: "Confidence gap",
   quality_doubt: "Confidence gap",
   fit_size_doubt: "Confidence gap",
-  size_or_stock_gone: "Confidence gap",
+  size_or_stock_gone: "Availability",
   price_wait: "Value & timing",
   occasion_timing: "Value & timing",
-  delivery_return_friction: "Operational",
+  delivery_return_friction: "Post-purchase",
 };
 
 export function blockerType(code: string): string {
@@ -31,46 +32,22 @@ export interface Insight {
 export const INSIGHTS: Insight[] = [
   {
     finding:
-      "The most-cited blockers are confidence doubts — trust, quality, fit, and validation lead the ranking.",
-    takeaway: "Shoppers hold saved items until they feel sure enough to commit.",
+      "Most of what shoppers write publicly is about what happened after they ordered — shipping, pickups, refunds and whether the item matched its listing.",
+    takeaway: "Public reviews are written by buyers, about orders.",
   },
   {
     finding:
-      "A distinct cluster is wishlist decision-friction: too many saved items, and no easy way to recall or compare them.",
-    takeaway: "Users lose track of what they saved and why.",
+      "A separate group of feedback comes from people talking while items are still saved: lists that grow, options that blur together, and saves they no longer recognise.",
+    takeaway: "This voice appears in discussion, not in app reviews.",
   },
   {
     finding:
-      "With no discounts to offer and trust already handled on-app, the biggest movable lever is decision support at the moment of choice.",
-    takeaway: "Fix the decision, not the price.",
+      "Shoppers describe saving for very different reasons — tracking a price, parking an impulse, or keeping a genuine shortlist — and these behave nothing alike.",
+    takeaway: "A saved item is not automatically an intent to buy.",
   },
   {
     finding:
-      "Helping users recall, compare, and validate the items already in their wishlist is what turns saving into buying.",
-    takeaway: "Growth comes from acting on what's already saved.",
-  },
-];
-
-export interface NeedGroup {
-  title: string;
-  items: string[];
-}
-
-export const NEEDS: NeedGroup[] = [
-  {
-    title: "Decision support (highest opportunity)",
-    items: [
-      "In-wishlist comparison for similar saved items.",
-      "Verified reviews and real buyer photos surfaced at the wishlist decision point.",
-      "Wishlist recall — sort, filter, and a reminder of why each item was saved.",
-      "“Complete the look” suggestions built from already-saved items.",
-    ],
-  },
-  {
-    title: "Confidence & clarity",
-    items: [
-      "Prominent authenticity and quality signals on the product page and in the wishlist.",
-      "Clear size / fit guidance for apparel and footwear saves.",
-    ],
+      "Reassurance-seeking runs through the saved-item conversations: shoppers ask each other what to pick, and change their saved list based on the answers.",
+    takeaway: "Deciding is social before it is transactional.",
   },
 ];

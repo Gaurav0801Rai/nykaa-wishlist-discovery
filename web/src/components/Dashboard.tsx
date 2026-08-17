@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import type { ClassifiedItem, Methodology } from "@/lib/types";
 import { aggregateBlockers } from "@/lib/corpus";
 import { lens2Rank, tierLabel } from "@/lib/opportunity";
-import { blockerType, INSIGHTS, NEEDS } from "@/lib/dashboard";
+import { blockerType, INSIGHTS } from "@/lib/dashboard";
 import { blockerLabel } from "@/lib/taxonomy";
 import BlockerRow from "./BlockerRow";
 
@@ -26,12 +26,11 @@ export default function Dashboard({
 }) {
   const agg = useMemo(() => aggregateBlockers(items), [items]);
   const maxCount = Math.max(...agg.map((a) => a.count), 1);
-  const focus = useMemo(() => lens2Rank(agg).filter((r) => r.weight >= 2).slice(0, 5), [agg]);
+  const ranked = useMemo(() => lens2Rank(agg), [agg]);
   const sources = Object.entries(methodology.sources).sort((a, b) => b[1] - a[1]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
-      {/* overview */}
       <section>
         <h2 className="h2">Discovery analytics</h2>
         <div className="grid grid-3" style={{ marginTop: 14 }}>
@@ -53,12 +52,11 @@ export default function Dashboard({
         </div>
       </section>
 
-      {/* top blockers */}
       <section>
-        <h2 className="h2">Top blockers — what users are telling us</h2>
+        <h2 className="h2">What users are telling us</h2>
         <p className="lead" style={{ marginBottom: 18 }}>
-          Ranked by how often each appears across {methodology.user_feedback} items. Grouped by type;
-          expand any for real quotes.
+          Every blocker found across {methodology.user_feedback} items, ranked by how often it appears.
+          Expand any row to read the feedback behind it.
         </p>
         {agg.map((a) => (
           <BlockerRow
@@ -73,22 +71,24 @@ export default function Dashboard({
         ))}
       </section>
 
-      {/* where to focus */}
       <section>
-        <h2 className="h2">Where to focus — the fixable opportunities</h2>
-        <p className="lead" style={{ marginBottom: 18 }}>
-          Re-prioritised for the goal (buy a saved item within 30 days) with <strong>no discounts</strong>.
-          Trust is already handled on-app and price needs deals we can&apos;t use, so the highest-leverage
-          fixes are the wishlist-decision blockers below.
+        <h2 className="h2">Reading the same data by where it happens</h2>
+        <p className="lead" style={{ marginBottom: 8 }}>
+          Raw frequency reflects who writes reviews: people who already ordered. Re-reading the same
+          blockers by <strong>when in the journey they occur</strong> separates what shoppers say while an
+          item is still saved from what they report after an order arrived.
+        </p>
+        <p className="muted small" style={{ marginBottom: 18, maxWidth: "72ch" }}>
+          Nothing is removed — all {agg.length} blockers stay listed with their real counts.
         </p>
         <div className="grid">
-          {focus.map((r, i) => (
+          {ranked.map((r, i) => (
             <div className="card pad" key={r.code} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-              <div className="serif" style={{ fontSize: 24, color: "var(--brand)", minWidth: 28 }}>{i + 1}</div>
+              <div className="serif" style={{ fontSize: 22, color: "var(--brand)", minWidth: 26 }}>{i + 1}</div>
               <div>
                 <div style={{ fontWeight: 700 }}>
                   {blockerLabel(r.code)}{" "}
-                  <span className="typechip">{tierLabel(r.weight)} opportunity</span>{" "}
+                  <span className="typechip">{tierLabel(r.weight)}</span>{" "}
                   <span className="muted small">· {r.count} items ({r.pct}%)</span>
                 </div>
                 <div className="muted small" style={{ marginTop: 4 }}>{r.rationale}</div>
@@ -98,10 +98,9 @@ export default function Dashboard({
         </div>
       </section>
 
-      {/* key insights */}
       <section>
-        <h2 className="h2">Key insights</h2>
-        <p className="lead" style={{ marginBottom: 18 }}>What the data means when read together.</p>
+        <h2 className="h2">Observations</h2>
+        <p className="lead" style={{ marginBottom: 18 }}>Patterns that emerge when the feedback is read together.</p>
         <div className="grid grid-2">
           {INSIGHTS.map((ins, i) => (
             <div className="card pad" key={i}>
@@ -112,28 +111,11 @@ export default function Dashboard({
         </div>
       </section>
 
-      {/* needs / opportunities */}
-      <section>
-        <h2 className="h2">Top user needs &amp; opportunities</h2>
-        <p className="lead" style={{ marginBottom: 18 }}>Direct requests and openings mapped from the corpus.</p>
-        <div className="grid grid-2">
-          {NEEDS.map((g) => (
-            <div className="card pad" key={g.title}>
-              <h3 style={{ marginTop: 0, fontSize: 17 }}>{g.title}</h3>
-              <ul className="small" style={{ margin: 0, paddingLeft: 18 }}>
-                {g.items.map((it, i) => <li key={i} style={{ marginBottom: 6 }}>{it}</li>)}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* about the data */}
       <section>
         <div className="card pad muted small">
           <strong>About the data.</strong> {methodology.user_feedback} pieces of real user feedback:
           {" "}{methodology.nykaa_items} Nykaa app-store reviews and forum posts, plus {methodology.added_items}{" "}
-          Reddit and community discussions about wishlist shopping. Each one is read by AI and tagged
+          Reddit and community discussions about wishlist shopping. Each one was read and tagged
           against 15 possible blockers, across every product category.
         </div>
       </section>
