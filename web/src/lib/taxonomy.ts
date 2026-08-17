@@ -42,11 +42,11 @@ export const CATEGORIES: Record<string, string> = {
 // Group raw item sources into user-facing filter buckets.
 export function sourceGroup(source: string): string {
   if (source === "user_added") return "Your added data";
-  if (source.startsWith("web_")) return "Supporting research";
   switch (source) {
     case "play_store": return "Play Store";
     case "app_store": return "App Store";
     case "reddit": return "Reddit";
+    case "community": return "Community & web";
     case "quora": return "Discussions";
     case "trustpilot":
     case "pissedconsumer":
@@ -56,7 +56,7 @@ export function sourceGroup(source: string): string {
 }
 
 export const PRIMARY_SOURCE_GROUPS = [
-  "Play Store", "App Store", "Reddit", "Web forums", "Discussions",
+  "Play Store", "App Store", "Reddit", "Web forums", "Discussions", "Community & web",
 ];
 
 export function blockerLabel(code: string): string {

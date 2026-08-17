@@ -1,12 +1,9 @@
 import classifiedRaw from "@/data/classified.json";
-import externalRaw from "@/data/external.json";
 import methodologyRaw from "@/data/methodology.json";
-import type { ClassifiedItem, ExternalItem, Methodology } from "@/lib/types";
+import type { ClassifiedItem, Methodology } from "@/lib/types";
 import Analysis from "@/components/Analysis";
-import SupportingResearch from "@/components/SupportingResearch";
 
 const base = classifiedRaw as ClassifiedItem[];
-const external = externalRaw as ExternalItem[];
 const methodology = methodologyRaw as Methodology;
 
 export default function Home() {
@@ -32,22 +29,9 @@ export default function Home() {
 
           <Analysis
             base={base}
-            external={external}
             methodology={methodology}
             taggingBadge={taggingBadge}
           />
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <span className="eyebrow">Supporting research</span>
-          <h2 className="h2">External benchmarks (context, not counted)</h2>
-          <p className="lead" style={{ marginBottom: 20 }}>
-            Widely-cited research that motivates the decision-graveyard hypothesis — kept strictly
-            separate from Nykaa&apos;s measured percentages.
-          </p>
-          <SupportingResearch external={external} />
         </div>
       </section>
     </main>

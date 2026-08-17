@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container">
             Part 1 · AI-Powered Discovery Engine — discovering the wishlist→purchase blocker for
             Nykaa Fashion, across categories, with no monetary incentives. Percentages come from
-            collected user feedback only; external research is shown as labelled context.
+            collected user feedback (Nykaa reviews + Reddit &amp; community wishlist discussion).
           </div>
         </footer>
       </body>

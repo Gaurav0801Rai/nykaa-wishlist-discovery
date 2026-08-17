@@ -88,8 +88,16 @@ async function main() {
     await sleep(5000); // spread requests out to respect the free-tier rate limit
   }
 
+  // SAFETY GUARD: if too much failed (e.g. quota exhausted mid-run), do NOT
+  // overwrite the existing good classified.json with mostly-empty tags.
+  const emptyRate = out.filter((o) => o.blocker_codes.length === 0).length / out.length;
+  if (failures / out.length > 0.2 || emptyRate > 0.5) {
+    console.error(`\nABORTED write: ${failures} failures, ${Math.round(emptyRate * 100)}% empty. ` +
+      `Existing classified.json kept intact. Re-run when quota is healthy.`);
+    process.exit(1);
+  }
+
   writeFileSync(join(DATA, "classified.json"), JSON.stringify(out, null, 0), "utf-8");
-  // stamp methodology tagging_method
   const mp = join(DATA, "methodology.json");
   const meth = JSON.parse(readFileSync(mp, "utf-8"));
   meth.tagging_method = `gemini:${model}`;

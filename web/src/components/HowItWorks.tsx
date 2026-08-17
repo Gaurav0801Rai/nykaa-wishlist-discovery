@@ -32,6 +32,7 @@ function Stat({ n, label }: { n: number; label: string }) {
 export default function HowItWorks({ m, taggingBadge }: { m: Methodology; taggingBadge: string }) {
   const reasons = Object.entries(m.reject_reasons).sort((a, b) => b[1] - a[1]);
   const maxR = reasons[0]?.[1] || 1;
+  const sources = Object.entries(m.sources).sort((a, b) => b[1] - a[1]);
 
   return (
     <div>
@@ -46,23 +47,26 @@ export default function HowItWorks({ m, taggingBadge }: { m: Methodology; taggin
       </div>
 
       <div className="grid grid-3" style={{ margin: "22px 0" }}>
-        <Stat n={m.collected} label="items collected" />
-        <Stat n={m.kept} label="kept after relevance filter" />
-        <Stat n={m.rejected} label="rejected (reasons logged)" />
+        <Stat n={m.user_feedback} label="user-feedback items (drive all %)" />
+        <Stat n={m.nykaa_collected} label="items collected & screened" />
+        <Stat n={m.nykaa_rejected} label="rejected (reasons logged)" />
       </div>
 
       <div className="grid grid-2">
         <div className="card pad">
-          <h3 style={{ marginTop: 0, fontSize: 18 }}>Two separate buckets</h3>
-          <p className="small muted" style={{ marginTop: 0 }}>
-            <strong>{m.primary}</strong> user-feedback items drive every blocker count and % on this
-            site. <strong>{m.external}</strong> external research items appear only as labelled
-            context and are <strong>never</strong> counted in a Nykaa %.
-          </p>
-          <p className="small muted" style={{ marginBottom: 0 }}>
-            Classifier: <code>{taggingBadge}</code>
-            {taggingBadge.startsWith("heuristic") &&
-              " — provisional keyword tags; run the Gemini re-tag to finalise."}
+          <h3 style={{ marginTop: 0, fontSize: 18 }}>Sources (all count toward the %)</h3>
+          <div className="bars">
+            {sources.map(([s, n]) => (
+              <div className="bar-row" key={s} style={{ gridTemplateColumns: "150px 1fr 40px" }}>
+                <div className="bar-label small">{s}</div>
+                <div className="bar-track"><div className="bar-fill" style={{ width: `${(100 * n) / m.user_feedback}%` }} /></div>
+                <div className="bar-num">{n}</div>
+              </div>
+            ))}
+          </div>
+          <p className="small muted" style={{ marginBottom: 0, marginTop: 12 }}>
+            {m.nykaa_items} Nykaa items + {m.added_items} Reddit/community wishlist voice.
+            Classifier: <code>{taggingBadge}</code>.
           </p>
         </div>
         <div className="card pad">

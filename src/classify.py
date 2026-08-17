@@ -31,7 +31,9 @@ CACHE.mkdir(parents=True, exist_ok=True)
 # ---- the locked candidate blocker vocabulary (CLAUDE.md) ----
 BLOCKER_PATTERNS = {
     "choice_overload": r"too many|so many (option|choice|thing|item|dress|style|design)|overwhelm|can'?t (decide|choose|pick)|hard to (choose|decide|pick)|spoilt for choice|cluttered|decision fatigue|cognitive load|paralys|how many (shade|colour|color|type)",
-    "context_loss": r"forgot|forget|lost track|don'?t remember|why i saved|overflowing|impossible to sort|marooned|\d{2,}\s*(saved )?items|so many saved|scrolling past them|mix of items|shortlist now feels|no way to (filter|sort)",
+    # WISHLIST context-loss: accumulation / overflow / forgetting near a
+    # wishlist/save/cart token, not conversational "forgot to reply".
+    "context_loss": r"(?:wish ?list|saved items?|\bcart\b|shortlist)\b.{0,70}(?:forgot|forget|lost track|overflow|impossible to sort|cluttered|too many|so many|accumulat|piling|hundreds|gazillion|for (?:months|weeks|years)|never (?:clear|able|get)|\bclear\b|\d{2,}\s*items?)|(?:toxic|hundreds of|gazillion|so many|piling up|clear my|buy my|huge loan|can'?t clear|never clear).{0,30}wish ?list|(?:forgot|forget|lost track|accumulat)\w*.{0,50}(?:wish ?list|saved|to buy)|overflowing|impossible to sort|marooned|out of sight,? out of mind|black hole|no way to (?:filter|sort)|\d{2,}\s*(?:saved )?items?\b.{0,25}(?:wish ?list|cart|list)|so many saved|shortlist now feels|cluttered and overwhelming|mark[- ]and[- ]forget",
     "within_category_compare_gap": r"compar(e|ing|ison)|which one|hard to compare|across (separate|different) (window|tab)|side by side|too similar|look(s)? the same",
     "confidence_validation_gap": r"not sure|unsure|doubt|second[- ]guess|need (an )?opinion|reviews?|verified buyer|photos?|as (shown|described|advertised|expected)|looks? different|true to size|will it (fit|suit|match)|confiden|trust the",
     "endless_search_deferral": r"just browsing|keep (looking|scrolling|checking)|browsing mode|thrill of the hunt|rabbit hole|almost no purchasing|quit the process|never (buy|purchas)|keep scrolling past|window shop",
@@ -93,13 +95,22 @@ C_RE = _compile(CATEGORY_PATTERNS)
 S_RE = _compile(SEGMENT_PATTERNS)
 
 
+_QUOTE_FALLBACK = re.compile(
+    r"wish ?list|\bcart\b|saved|shortlist|forgot|forget|too many|so many|"
+    r"discount|sale|price|size|fit|quality|compare|genuine|authentic|fake", re.I)
+
+
 def pick_quote(text: str, blocker_codes: list[str]) -> str:
-    sentences = re.split(r"(?<=[.!?])\s+|\n+", text)
+    sentences = [s for s in re.split(r"(?<=[.!?])\s+|\n+", text) if len(s.strip()) > 8]
     for code in blocker_codes:
         rx = B_RE.get(code)
         for sent in sentences:
-            if rx and rx.search(sent) and len(sent.strip()) > 8:
+            if rx and rx.search(sent):
                 return sent.strip()[:220]
+    # no sentence matched the blocker directly -> prefer a decision-relevant sentence
+    for sent in sentences:
+        if _QUOTE_FALLBACK.search(sent):
+            return sent.strip()[:220]
     return (sentences[0].strip() if sentences else text.strip())[:220]
 
 

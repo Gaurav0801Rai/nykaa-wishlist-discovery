@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { ClassifiedItem, ExternalItem, Methodology } from "@/lib/types";
+import type { ClassifiedItem, Methodology } from "@/lib/types";
 import { CATEGORIES } from "@/lib/taxonomy";
 import { filterItems } from "@/lib/corpus";
 import Filters from "./Filters";
@@ -23,12 +23,10 @@ const TABS: { id: Tab; label: string }[] = [
 
 export default function Analysis({
   base,
-  external,
   methodology,
   taggingBadge,
 }: {
   base: ClassifiedItem[];
-  external: ExternalItem[];
   methodology: Methodology;
   taggingBadge: string;
 }) {

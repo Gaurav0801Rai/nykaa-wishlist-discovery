@@ -16,11 +16,12 @@ export interface ExternalItem {
 }
 
 export interface Methodology {
-  collected: number;
-  kept: number;
-  primary: number;
-  external: number;
-  rejected: number;
+  user_feedback: number;
+  nykaa_items: number;
+  added_items: number;
+  sources: Record<string, number>;
+  nykaa_collected: number;
+  nykaa_rejected: number;
   reject_reasons: Record<string, number>;
   tagging_method?: string;
   gaps: string[];
