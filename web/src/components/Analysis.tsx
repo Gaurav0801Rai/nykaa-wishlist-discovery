@@ -11,11 +11,9 @@ type View = "ask" | "dashboard" | "analyzer";
 export default function Analysis({
   base,
   methodology,
-  taggingBadge,
 }: {
   base: ClassifiedItem[];
   methodology: Methodology;
-  taggingBadge: string;
 }) {
   const [view, setView] = useState<View>("ask");
 
@@ -34,9 +32,7 @@ export default function Analysis({
       </div>
 
       {view === "ask" && <ChatBot />}
-      {view === "dashboard" && (
-        <Dashboard items={base} methodology={methodology} taggingBadge={taggingBadge} />
-      )}
+      {view === "dashboard" && <Dashboard items={base} methodology={methodology} />}
       {view === "analyzer" && <Analyzer />}
     </div>
   );

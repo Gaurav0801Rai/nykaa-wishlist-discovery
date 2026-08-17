@@ -20,11 +20,9 @@ function Stat({ n, label }: { n: number | string; label: string }) {
 export default function Dashboard({
   items,
   methodology,
-  taggingBadge,
 }: {
   items: ClassifiedItem[];
   methodology: Methodology;
-  taggingBadge: string;
 }) {
   const agg = useMemo(() => aggregateBlockers(items), [items]);
   const maxCount = Math.max(...agg.map((a) => a.count), 1);
@@ -133,12 +131,10 @@ export default function Dashboard({
       {/* about the data */}
       <section>
         <div className="card pad muted small">
-          <strong>About the data.</strong> {methodology.user_feedback} user-feedback items
-          ({methodology.nykaa_items} Nykaa app/store &amp; forum reviews + {methodology.added_items} Reddit /
-          community wishlist discussion), screened from {methodology.nykaa_collected} collected. Tagged by{" "}
-          <code>{taggingBadge}</code>. Public data is post-purchase and negative-skewed, so pre-purchase
-          wishlist-deferral friction is under-sampled — a directional discovery signal to confirm in Part-3
-          survey &amp; interviews.
+          <strong>About the data.</strong> {methodology.user_feedback} pieces of real user feedback:
+          {" "}{methodology.nykaa_items} Nykaa app-store reviews and forum posts, plus {methodology.added_items}{" "}
+          Reddit and community discussions about wishlist shopping. Each one is read by AI and tagged
+          against 15 possible blockers, across every product category.
         </div>
       </section>
     </div>

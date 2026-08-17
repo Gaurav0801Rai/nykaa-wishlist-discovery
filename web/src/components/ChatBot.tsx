@@ -1,9 +1,22 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { QUESTIONS } from "@/lib/questions";
 
 type Msg = { role: "user" | "assistant"; content: string };
+
+// Strip any markdown the model still emits so answers read as clean plain text.
+function clean(s: string): string {
+  return s
+    .replace(/\*\*(.*?)\*\*/g, "$1")
+    .replace(/\*(.*?)\*/g, "$1")
+    .replace(/^#{1,6}\s*/gm, "")
+    .replace(/`([^`]*)`/g, "$1")
+    .replace(/^\s*[-*•]\s+/gm, "• ")
+    .replace(/\|/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
 
 export default function ChatBot() {
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -11,6 +24,10 @@ export default function ChatBot() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scroller = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    scroller.current?.scrollTo({ top: scroller.current.scrollHeight, behavior: "smooth" });
+  }, [messages, loading]);
 
   async function send(text: string) {
     const q = text.trim();
@@ -28,77 +45,65 @@ export default function ChatBot() {
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || "Request failed.");
-      setMessages((m) => [...m, { role: "assistant", content: json.reply }]);
+      setMessages((m) => [...m, { role: "assistant", content: clean(json.reply) }]);
     } catch (e: any) {
       setError(e?.message || "Something went wrong.");
     } finally {
       setLoading(false);
-      setTimeout(() => scroller.current?.scrollTo({ top: 1e9, behavior: "smooth" }), 50);
     }
   }
 
   return (
     <div>
-      <h2 className="h2">What are users saying about the wishlist?</h2>
-      <p className="lead" style={{ marginBottom: 16 }}>
-        Pick a question below or ask your own — answers are grounded in the collected feedback.
+      <p className="lead" style={{ marginBottom: 14 }}>
+        Ask anything about the findings, or pick a question to get started.
       </p>
 
-      <div className="card pad" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-        {messages.length === 0 && (
-          <div>
-            <p className="small" style={{ fontWeight: 700, margin: "0 0 8px" }}>Try a discovery question:</p>
-            <div className="filters">
-              {QUESTIONS.map((q) => (
-                <button key={q.id} className="toggle" onClick={() => send(q.question)} disabled={loading}>
-                  {q.question}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {messages.length > 0 && (
-          <div ref={scroller} style={{ maxHeight: 420, overflowY: "auto", display: "flex", flexDirection: "column", gap: 12 }}>
-            {messages.map((m, i) => (
-              <div key={i} className={m.role === "user" ? "chat-user" : "chat-bot"}>
-                {m.content}
+      <div className="chat-card">
+        <div className="chat-scroll" ref={scroller}>
+          {messages.length === 0 ? (
+            <div>
+              <p className="small" style={{ fontWeight: 700, margin: "0 0 10px" }}>Try a question:</p>
+              <div className="filters">
+                {QUESTIONS.map((q) => (
+                  <button key={q.id} className="toggle" onClick={() => send(q.question)} disabled={loading}>
+                    {q.question}
+                  </button>
+                ))}
               </div>
-            ))}
-            {loading && <div className="chat-bot"><span className="spinner" style={{ borderTopColor: "var(--brand)" }} /> thinking…</div>}
-          </div>
-        )}
+            </div>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {messages.map((m, i) => (
+                <div key={i} className={m.role === "user" ? "chat-user" : "chat-bot"}>{m.content}</div>
+              ))}
+              {loading && (
+                <div className="chat-bot"><span className="spinner" style={{ borderTopColor: "var(--brand)" }} /> thinking…</div>
+              )}
+            </div>
+          )}
+        </div>
 
         {error && (
-          <div className="err">
+          <div className="err" style={{ margin: "10px 14px 0" }}>
             {error}
             {/not configured|unavailable/i.test(error) && (
-              <div className="small" style={{ marginTop: 6 }}>
-                The chatbot needs a server key (<code>GROQ_API_KEY</code>) set in the environment.
-              </div>
+              <div className="small" style={{ marginTop: 6 }}>The chatbot needs a server key (<code>GROQ_API_KEY</code>).</div>
             )}
           </div>
         )}
 
-        <form
-          onSubmit={(e) => { e.preventDefault(); send(input); }}
-          style={{ display: "flex", gap: 10 }}
-        >
+        <form className="chat-form" onSubmit={(e) => { e.preventDefault(); send(input); }}>
           <input
             className="chat-input"
-            placeholder="Ask about wishlist blockers, segments, opportunities…"
+            placeholder="Ask about wishlist blockers, opportunities, segments…"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={loading}
           />
-          <button className="btn btn-primary" type="submit" disabled={loading || !input.trim()}>
-            Send
-          </button>
+          <button className="btn btn-primary" type="submit" disabled={loading || !input.trim()}>Send</button>
         </form>
       </div>
-      <p className="muted small" style={{ marginTop: 10 }}>
-        The assistant answers from this study&apos;s corpus; it flags thin-data questions that need Part-3 research.
-      </p>
     </div>
   );
 }

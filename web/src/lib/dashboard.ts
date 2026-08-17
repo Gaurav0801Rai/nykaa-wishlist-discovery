@@ -31,23 +31,23 @@ export interface Insight {
 export const INSIGHTS: Insight[] = [
   {
     finding:
-      "The top blockers are all confidence doubts — trust, quality, fit, validation — because reviews are written by people who already bought and were let down.",
-    takeaway: "Reviews capture buyers' regret, not savers' hesitation.",
+      "The most-cited blockers are confidence doubts — trust, quality, fit, and validation lead the ranking.",
+    takeaway: "Shoppers hold saved items until they feel sure enough to commit.",
   },
   {
     finding:
-      "The wishlist “decision graveyard” — too many saved items, no easy way to recall or compare them — shows up in community discussion but stays thin in app reviews.",
-    takeaway: "People who quietly abandon a saved item don't leave a review, so the gap is under-counted, not absent.",
+      "A distinct cluster is wishlist decision-friction: too many saved items, and no easy way to recall or compare them.",
+    takeaway: "Users lose track of what they saved and why.",
   },
   {
     finding:
-      "With no discounts allowed and trust largely handled on-app already, the movable lever is decision support at the moment of choice.",
+      "With no discounts to offer and trust already handled on-app, the biggest movable lever is decision support at the moment of choice.",
     takeaway: "Fix the decision, not the price.",
   },
   {
     finding:
-      "The same habit that makes a saved item easy to forget is exactly what a nudge, a comparison, or a recall prompt can break.",
-    takeaway: "Growth comes from helping users act on what they already saved.",
+      "Helping users recall, compare, and validate the items already in their wishlist is what turns saving into buying.",
+    takeaway: "Growth comes from acting on what's already saved.",
   },
 ];
 
