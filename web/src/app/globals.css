@@ -148,11 +148,8 @@ textarea.feedback:focus { outline: 2px solid var(--brand); outline-offset: 1px; 
 
 .corpus-toggle { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
 
-/* tier chips (Lens 2) */
-.tier { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; }
-.tier-high { background: var(--brand); color: #fff; }
-.tier-medium { background: var(--brand-tint-2); color: var(--brand-dark); }
-.tier-lower { background: #eee; color: #777; }
+/* type chip (dashboard) */
+.typechip { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 999px; background: var(--brand-tint); color: var(--brand-dark); border: 1px solid var(--brand-tint-2); text-transform: uppercase; letter-spacing: 0.03em; vertical-align: middle; }
 
 /* pipeline strip */
 .pipeline { display: flex; flex-wrap: wrap; gap: 10px; }

@@ -35,9 +35,7 @@ export default function BlockerRow({
         <span>
           <span style={{ fontWeight: 600 }}>
             {blockerLabel(code)}
-            {badge && (
-              <span className={`tier tier-${badge.toLowerCase()}`} style={{ marginLeft: 8 }}>{badge}</span>
-            )}
+            {badge && <span className="typechip" style={{ marginLeft: 8 }}>{badge}</span>}
           </span>
           <span className="muted small" style={{ display: "block" }}>
             {subtitle || BLOCKERS[code]?.blurb}

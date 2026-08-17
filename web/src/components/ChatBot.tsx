@@ -39,9 +39,9 @@ export default function ChatBot() {
 
   return (
     <div>
+      <h2 className="h2">What are users saying about the wishlist?</h2>
       <p className="lead" style={{ marginBottom: 16 }}>
-        Ask about the findings — the Part-1 discovery questions, or anything else. Answers are
-        grounded in this study&apos;s data and honest about what needs primary research.
+        Pick a question below or ask your own — answers are grounded in the collected feedback.
       </p>
 
       <div className="card pad" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
