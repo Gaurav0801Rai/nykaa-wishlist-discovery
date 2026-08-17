@@ -22,11 +22,19 @@ Q&A — all powered by one **Google Gemini** classifier.
   and **never** counted in a Nykaa %.
 
 ## Backend (hidden)
-`/api/analyze` (server-only, Node runtime) reads **`GEMINI_API_KEY`** and calls Gemini
-(`gemini-3.5-flash` by default; override with `GEMINI_MODEL`). The key, model, endpoint, and every backend detail stay on
-the server — the route returns only `{ count, results }`. JSON parsing is defensive
-(validates blocker codes against the taxonomy). The **same** classifier re-tags the base
-corpus via `npm run retag`, so every number on the site comes from one classifier.
+Two server-only routes; keys read on the server only, never exposed to the browser.
+
+- **`/api/analyze`** — reads **`GEMINI_API_KEY`**, calls Gemini (`gemini-3.5-flash` by
+  default; override with `GEMINI_MODEL`), returns only `{ count, results }`. Defensive JSON
+  parsing (validates blocker codes against the taxonomy). Powers the live "Add data" analyzer.
+- **`/api/chat`** — reads **`GROQ_API_KEY`** (Groq, `llama-3.3-70b-versatile` by default;
+  override with `GROQ_MODEL` — set a current model from your Groq console), returns `{ reply }`.
+  Powers the **"Ask the data"** chatbot. It is grounded in this study's corpus + the Part-1
+  discovery questions (see `src/lib/knowledge.ts`), answers free-form questions too, and is
+  told to cite real numbers and flag thin-data questions honestly.
+
+Both fail with a generic message (no backend detail) when their key is missing, and the rest
+of the site keeps working.
 
 ## Run locally
 ```bash

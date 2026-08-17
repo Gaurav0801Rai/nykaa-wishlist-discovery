@@ -10,14 +10,16 @@ import Lens1UserVoice from "./Lens1UserVoice";
 import Lens2Opportunity from "./Lens2Opportunity";
 import DiscoveryQuestions from "./DiscoveryQuestions";
 import HowItWorks from "./HowItWorks";
+import ChatBot from "./ChatBot";
 
-type Tab = "analyzer" | "lens1" | "lens2" | "questions" | "how";
+type Tab = "analyzer" | "lens1" | "lens2" | "questions" | "ask" | "how";
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "analyzer", label: "Analyzer" },
   { id: "lens1", label: "Lens 1 · What users tell us" },
   { id: "lens2", label: "Lens 2 · Where the opportunity is" },
   { id: "questions", label: "Discovery Questions" },
+  { id: "ask", label: "Ask the data" },
   { id: "how", label: "How it works" },
 ];
 
@@ -107,6 +109,7 @@ export default function Analysis({
       {tab === "lens1" && <Lens1UserVoice items={filtered} />}
       {tab === "lens2" && <Lens2Opportunity items={filtered} />}
       {tab === "questions" && <DiscoveryQuestions items={corpusAll} />}
+      {tab === "ask" && <ChatBot />}
       {tab === "how" && <HowItWorks m={methodology} taggingBadge={taggingBadge} />}
     </div>
   );
