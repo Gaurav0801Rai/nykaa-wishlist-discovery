@@ -6,7 +6,7 @@ rank,blocker_code,blocker,theme,items,pct_of_276
 5,decision_paralysis,Decision paralysis,Decision friction,30,10.9
 6,confidence_validation_gap,Confidence / validation gap,Confidence gap,23,8.3
 7,fit_size_doubt,Fit / size doubt,Confidence gap,23,8.3
-8,within_category_compare_gap,Comparison gap,Decision friction,21,7.6
+8,competitor_comparison,Competitor comparison,Decision friction,21,7.6
 9,bookmarking_no_intent,"Bookmarking, no intent",Decision friction,17,6.2
 10,context_loss,Context loss / wishlist visibility,Decision friction,15,5.4
 11,occasion_timing,Occasion / timing,Value & timing,10,3.6

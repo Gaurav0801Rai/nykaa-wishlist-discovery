@@ -30,7 +30,7 @@ LABEL = {
     "decision_paralysis": "Decision paralysis",
     "confidence_validation_gap": "Confidence / validation gap",
     "fit_size_doubt": "Fit / size doubt",
-    "within_category_compare_gap": "Comparison gap",
+    "competitor_comparison": "Competitor comparison",
     "bookmarking_no_intent": "Bookmarking, no intent",
     "context_loss": "Context loss / wishlist visibility",
     "occasion_timing": "Occasion / timing",
@@ -41,7 +41,7 @@ LABEL = {
 THEME = {
     "decision_paralysis": "Decision friction",
     "context_loss": "Decision friction",
-    "within_category_compare_gap": "Decision friction",
+    "competitor_comparison": "Decision friction",
     "bookmarking_no_intent": "Decision friction",
     "cross_sell_miss": "Decision friction",
     "styling_uncertainty": "Decision friction",
@@ -135,8 +135,8 @@ def main() -> int:
     md.append(f"**Friction while an item is still saved is a distinct, smaller signal.** Decision "
               f"friction appears in {themes['Decision friction']} items "
               f"({round(100*themes['Decision friction']/n,1)}%), led by decision paralysis "
-              f"({counts['decision_paralysis']}), the comparison gap "
-              f"({counts['within_category_compare_gap']}), saving without buying "
+              f"({counts['decision_paralysis']}), competitor comparison "
+              f"({counts['competitor_comparison']}), saving without buying "
               f"({counts['bookmarking_no_intent']}) and context loss ({counts['context_loss']}).")
     md.append("")
     md.append("**Category profiles differ.** Apparel feedback carries fit and quality doubts; beauty "

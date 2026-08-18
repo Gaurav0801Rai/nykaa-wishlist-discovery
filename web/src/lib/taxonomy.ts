@@ -25,7 +25,7 @@ export const BLOCKERS: Record<string, BlockerMeta> = {
   decision_paralysis: { label: "Decision paralysis", blurb: "Keeps weighing and saving options without arriving at a decision." },
   choice_overload: { label: "Choice overload", blurb: "Too many options to decide between." },
   context_loss: { label: "Context loss / wishlist visibility", blurb: "Forgot why an item was saved; can't sort or find it in the wishlist." },
-  within_category_compare_gap: { label: "Comparison gap", blurb: "Hard to compare similar saved items side by side." },
+  competitor_comparison: { label: "Competitor comparison", blurb: "Weighs Nykaa against other platforms and often prefers them." },
   confidence_validation_gap: { label: "Confidence / validation gap", blurb: "Wants reassurance from others before committing." },
   endless_search_deferral: { label: "Endless search / deferral", blurb: "Keeps browsing and saving instead of deciding." },
   cross_sell_miss: { label: "Cross-sell miss", blurb: "Nothing shown alongside items already saved." },

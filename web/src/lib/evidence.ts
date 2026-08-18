@@ -46,9 +46,9 @@ export const EVIDENCE: Record<string, Evidence> = {
       "reddit_2ac1dd0ca0eb",
     ],
   },
-  within_category_compare_gap: {
+  competitor_comparison: {
     summary:
-      "Comparison happens across apps rather than inside one. Shoppers describe checking the same item on other platforms, and finding no way to filter or line up their saved options side by side.",
+      "Shoppers weigh Nykaa against other platforms before buying. They describe checking the same item elsewhere, finding it cheaper or faster somewhere else, and switching — and the effort of comparing across apps itself.",
     quoteIds: [
       "reddit_e84e220c174a",
       "play_store_22e3521a83ce",

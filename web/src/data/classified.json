@@ -80,7 +80,7 @@
     "blocker_codes": [
       "quality_doubt",
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "very poor services especially product quality and return policy .",
@@ -453,7 +453,7 @@
     "blocker_codes": [
       "quality_doubt",
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "product quality is worst yet not able to return easily.",
@@ -695,7 +695,7 @@
       "price_wait",
       "quality_doubt",
       "fit_size_doubt",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "apparel_ethnic",
     "supporting_quote": "Nykaa Fashion has attractive and trendy designs, but I feel the products are overpriced for the quality offered.",
@@ -775,7 +775,7 @@
     "blocker_codes": [
       "delivery_return_friction",
       "fit_size_doubt",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "apparel_ethnic",
     "supporting_quote": "worst service ever delay delivery 4/5 days, can't cancel, and packages without tag products box in horrible conditions like my order pick up frm trash.",
@@ -803,7 +803,7 @@
     "blocker_codes": [
       "price_wait",
       "trust_authenticity",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "Many products are advertised with attractive discounts or commission-based offers, but when I proceed to checkout, the actual savings are often far less than expected or don't apply.",
@@ -855,7 +855,7 @@
     "blocker_codes": [
       "occasion_timing",
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "they are not at helpful and could not even provide delivery agent number.",
@@ -965,7 +965,7 @@
     "source": "play_store",
     "text": "worst app, I would say, better please choose amazon or mytra for ordering products. I recently purchased an item worth 12k , and I have got a different color. i raised concern on the same day and had multiple mail and on call conversation with nykaa internal team and all I hear is wait for some more days, but never a solution. its been more than 20 days now and still no solution provided. I will rate 1 star, if possible a lesser rating if provided to nykaa fashion. worst customer support ever.",
     "blocker_codes": [
-      "within_category_compare_gap",
+      "competitor_comparison",
       "trust_authenticity",
       "delivery_return_friction"
     ],
@@ -1080,7 +1080,7 @@
     "text": "A very bad experience they don't deliver on time at all. I ordered my product on the third of July and it is almost 15 days now but I didn't receive my order even when I am trying to reach customer care there is no such response and the order status is showing that it will deliver soon since 2 week .. same product I ordered from clovia and received in just two days and still waiting for the nykaa's order",
     "blocker_codes": [
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "A very bad experience they don't deliver on time at all.",
@@ -1216,7 +1216,7 @@
     "blocker_codes": [
       "quality_doubt",
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "apparel_ethnic",
     "supporting_quote": "The return request is not yet approved and it's been more than 10 days now.",
@@ -1242,7 +1242,7 @@
     "blocker_codes": [
       "price_wait",
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "The products are quite expensive, and the return process is very slow.",
@@ -1267,7 +1267,7 @@
     "text": "worst app..... all my orders and parcels keeps getting rescheduling and gets delivered after 1 month.... even now my 2 products have not reached since 1 month... myntra Amazon are far more better.... DON'T USE THIS PLATFORM FOR SHOPPING AT ALL😡",
     "blocker_codes": [
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "all my orders and parcels keeps getting rescheduling and gets delivered after 1 month....",
@@ -1374,7 +1374,7 @@
     "source": "play_store",
     "text": "Terrible application. Please do not shop on this app. It's a mental torture to use this app. Please stick to Myntra or other apps for shopping. Nykaa has the worst delivery service as well as even more worse customer care services. Save yourself and please do not order anything from this app.",
     "blocker_codes": [
-      "within_category_compare_gap",
+      "competitor_comparison",
       "delivery_return_friction"
     ],
     "category_signal": "unknown_general",
@@ -1631,7 +1631,7 @@
     "blocker_codes": [
       "quality_doubt",
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "worst service, the return n refund policy cancelation policy is very poor , i received soiled product and when requested for return they denied it the reason was mentioned its like trapping a customer, is the company going to be b",
@@ -1695,7 +1695,7 @@
     "text": "Their return policy is pathetic, its been 15 days since I requested return but no response from their side. I issued ticket and tried calling customer support but they are of no use. Ajio and Myntra is much more better than this",
     "blocker_codes": [
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "Their return policy is pathetic, its been 15 days since I requested return but no response from their side.",
@@ -1774,7 +1774,7 @@
     "blocker_codes": [
       "quality_doubt",
       "confidence_validation_gap",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "it's nice but sometimes I recieve poor quality products, and it's indeed better than myntra, but just the review of others are less available that makes it less reliable to use",
@@ -2092,7 +2092,7 @@
     "text": "It's been 2 weeks since I requested return for a product I ordered from Nykaa, and the delivery person is yet to collect it. They use Delhivery as their logistics partner which is the worst logistics company in the world. I have finally raised a consumer forum complaint against Nykaa.\n\nGo for Myntra, avoid Nykaa at all costs. It's worse than Amazon.",
     "blocker_codes": [
       "delivery_return_friction",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "It's been 2 weeks since I requested return for a product I ordered from Nykaa, and the delivery person is yet to collect it.",
@@ -2465,7 +2465,7 @@
     "text": "so true! puma ones were very overwhelming. even nykaa through the whole pink Friday sale. i kept comparing prices through nykaa and myntra all the while, and it was so so tiring and time consuming. now I realize with one less week left for my prep, that I fucking wasted it all! now I've given up my phone, along with those damned apps",
     "blocker_codes": [
       "decision_paralysis",
-      "within_category_compare_gap",
+      "competitor_comparison",
       "price_wait"
     ],
     "category_signal": "unknown_general",
@@ -2518,7 +2518,7 @@
     "source": "reddit",
     "text": "Zepto and big basket has better deals atp. Elf BOGO is the only good thing. \n\nEven their other supposedly better sales don't have good deals. I've switched to TIRA and even tho delivery takes time i get shit for much cheaper . Last week i shopped from Tira and my cart was literally 1.2K cheaper than nykaa",
     "blocker_codes": [
-      "within_category_compare_gap",
+      "competitor_comparison",
       "price_wait"
     ],
     "category_signal": "makeup_beauty",
@@ -2677,7 +2677,7 @@
     "text": "Hey everyone! The Nykaa Black Friday Sale is expected to run from 23 november to 26 november 2025.\nSince nykaa hasn’t really been offering any decent discounts lately. I’m just curious, what’s on your \"Black Friday\" wishlist this year?\nAre you planning to get skincare, makeup, or maybe some perfumes from other sites instead?\nLet’s share and help each other find the best deals this time!",
     "blocker_codes": [
       "price_wait",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "makeup_beauty",
     "supporting_quote": "The Nykaa Black Friday Sale is expected to run from 23 november to 26 november 2025.",
@@ -2992,7 +2992,7 @@
     "text": "I saw many apps giving out 50% off on some of the products. Wanted to stock on my usuals and some in my wishlist. I didnt see any discount on the ones that I wanted. I didnt but anything. What are you girls buying? If any product that’s worth the hype, price and suitable for me, I am planning to buy it.\nDrop your Diwali purchases belowwwe\n\nEdit: I am looking to buy a couple of luxe products A perfume and a lipgloss. Would the November Nykaa sale have discounts on Luxe products?",
     "blocker_codes": [
       "price_wait",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "makeup_beauty",
     "supporting_quote": "I saw many apps giving out 50% off on some of the products.",
@@ -3398,7 +3398,7 @@
     "text": "There is no way to filter by size, price range, brand, availability.",
     "blocker_codes": [
       "context_loss",
-      "within_category_compare_gap"
+      "competitor_comparison"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "There is no way to filter by size, price range, brand, availability.",

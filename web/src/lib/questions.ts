@@ -42,7 +42,7 @@ export const QUESTIONS: DiscoveryQuestion[] = [
   {
     id: "comparison",
     question: "How do users compare options?",
-    blockers: ["within_category_compare_gap"],
+    blockers: ["competitor_comparison"],
     thin: true,
     note: "Cross-platform comparison (Myntra/AJIO/Amazon) shows up, but in-app comparison behaviour needs primary research.",
   },

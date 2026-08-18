@@ -4,7 +4,7 @@
 export const BLOCKER_CODES = [
   "choice_overload",
   "context_loss",
-  "within_category_compare_gap",
+  "competitor_comparison",
   "confidence_validation_gap",
   "endless_search_deferral",
   "cross_sell_miss",

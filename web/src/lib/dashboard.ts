@@ -6,7 +6,7 @@ export const BLOCKER_TYPE: Record<string, string> = {
   decision_paralysis: "Decision friction",
   choice_overload: "Decision friction",
   context_loss: "Decision friction",
-  within_category_compare_gap: "Decision friction",
+  competitor_comparison: "Decision friction",
   endless_search_deferral: "Decision friction",
   bookmarking_no_intent: "Decision friction",
   cross_sell_miss: "Decision friction",

@@ -6,7 +6,7 @@ quality_doubt,13,0,1,0,2,0,3,19,38
 decision_paralysis,1,0,0,0,0,0,7,22,30
 confidence_validation_gap,0,0,0,0,0,0,15,8,23
 fit_size_doubt,13,3,0,0,0,0,0,7,23
-within_category_compare_gap,3,0,0,0,0,0,3,15,21
+competitor_comparison,3,0,0,0,0,0,3,15,21
 bookmarking_no_intent,0,0,0,0,0,0,3,14,17
 context_loss,0,0,0,0,0,0,1,14,15
 occasion_timing,1,0,1,1,0,0,4,3,10

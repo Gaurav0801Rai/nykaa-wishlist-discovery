@@ -29,9 +29,9 @@ export const ACTIONABILITY: Record<string, Actionability> = {
     weight: 3,
     rationale: "Shoppers look for reassurance while still deciding; it is shaped by what the platform shows them.",
   },
-  within_category_compare_gap: {
+  competitor_comparison: {
     weight: 3,
-    rationale: "Comes up while weighing similar options against each other, pre-purchase.",
+    rationale: "Raised while still choosing where to buy, before committing to Nykaa at all.",
   },
   endless_search_deferral: {
     weight: 3,

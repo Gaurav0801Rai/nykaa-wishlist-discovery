@@ -9,7 +9,7 @@ Short codes:
   blockers: tr=trust_authenticity qd=quality_doubt cv=confidence_validation_gap
             fs=fit_size_doubt pw=price_wait ot=occasion_timing
             dr=delivery_return_friction es=endless_search_deferral
-            co=choice_overload cg=within_category_compare_gap cl=context_loss
+            co=choice_overload cg=competitor_comparison cl=context_loss
             sg=size_or_stock_gone su=styling_uncertainty cs=cross_sell_miss
             bn=bookmarking_no_intent
   category: ap=apparel_ethnic fw=footwear wa=watches sn=sunglasses bg=bags
@@ -29,7 +29,7 @@ B = {
     "tr": "trust_authenticity", "qd": "quality_doubt", "cv": "confidence_validation_gap",
     "fs": "fit_size_doubt", "pw": "price_wait", "ot": "occasion_timing",
     "dr": "delivery_return_friction", "es": "endless_search_deferral",
-    "co": "choice_overload", "cg": "within_category_compare_gap", "cl": "context_loss",
+    "co": "choice_overload", "cg": "competitor_comparison", "cl": "context_loss",
     "sg": "size_or_stock_gone", "su": "styling_uncertainty", "cs": "cross_sell_miss",
     "bn": "bookmarking_no_intent",
 }
@@ -60,7 +60,7 @@ QUOTE_HINTS = {
     "quality_doubt": r"quality|material|fabric|cheap|poor|damaged|defective|worth",
     "fit_size_doubt": r"\bsize\b|\bfit\b|too small|too big|tight|sizing",
     "size_or_stock_gone": r"out of stock|oos|sold out|not available|unavailable|stock",
-    "within_category_compare_gap": r"compar|myntra|ajio|amazon|flipkart|tira|zepto|other (site|app|platform)|physical store|cheaper",
+    "competitor_comparison": r"compar|myntra|ajio|amazon|flipkart|tira|zepto|other (site|app|platform)|physical store|cheaper",
     "occasion_timing": r"wedding|birthday|function|gift|occasion|festiv|urgent|in time",
     "delivery_return_friction": r"return|refund|deliver|pickup|pick up|replace|exchange",
     "bookmarking_no_intent": r"no.?buy|impulse|don'?t check out|not because i want|organi[sz]|wishlist so i|hoard|thrill",
