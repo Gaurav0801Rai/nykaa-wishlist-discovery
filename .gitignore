@@ -31,3 +31,7 @@ Thumbs.db
 
 # scratch / temp working files
 data/_*.json
+
+# local-only: project brief and generated report
+CLAUDE.md
+FINDINGS.md

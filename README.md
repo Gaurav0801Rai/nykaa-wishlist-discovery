@@ -1,41 +1,59 @@
-# Nykaa Fashion — Wishlist→Purchase Discovery Engine (Part 1)
+# Nykaa Fashion — Wishlist Discovery Engine
 
-Discovers *why users don't buy items they wishlist within 30 days*, **across all
-categories**, from public data. Analysis is a manual review of every collected item.
+An AI engine that reads real shopper feedback and ranks the reasons people don't buy the
+items they save to a wishlist.
 
-## Pipeline (scripts in `src/`, re-runnable)
-| Step | Script | Output |
-|------|--------|--------|
-| Collect | `collect_playstore.py`, `collect_appstore.py`, `collect_reddit.py`, `collect_forums.py`, `collect_websearch.py`, `ingest_provided.py`, `ingest_extra.py` | `data/raw/*.json`, `data/extra_raw.json` |
-| Filter | `filter.py` | `data/filtered.json`, `data/rejected.json` |
-| Analyse | manual review recorded in `data/claude_tags*.json`, applied by `apply_tags.py` | `web/src/data/classified.json` |
-| Report | `report.py` | `outputs/*.csv`, `FINDINGS.md` |
+**Live:** https://nykaa-wishlist-discovery.vercel.app
 
-Every corpus item was read and tagged by hand against the 15-blocker taxonomy;
-`data/claude_tags*.json` is the audit trail. Run the analysis end-to-end:
-```bash
-python src/run_all.py
+## What it does
+
+The site has three views:
+
+- **Ask Assistant** — a chatbot grounded in the analysed feedback. Ask about blockers,
+  categories or opportunities and it answers with the real numbers.
+- **Dashboard** — the ranked blockers with counts and percentages, each expanding to a short
+  summary and real verbatims, plus a view that re-reads the same blockers by where in the
+  shopping journey they occur.
+- **Live Analyzer** — paste reviews (up to 20) and they are classified live against the same
+  taxonomy. Session-only: nothing is saved, and the underlying data never changes.
+
+## The data
+
+276 pieces of real user feedback from the Play Store, Reddit, review forums, Q&A sites and
+community discussions. Every item was read and tagged by hand against a 15-blocker taxonomy.
+Tagging is multi-label, so an item can carry several blockers and percentages do not sum to
+100; items showing no blocker were left untagged rather than forced into one.
+
+`data/claude_tags*.json` holds the per-item tags, so any number on the site can be traced
+back to the feedback behind it. `npm run check` verifies that every quote shown on the site
+exists in the corpus, sits under a blocker it is actually tagged with, and is verbatim — it
+runs on every build.
+
+## Repository layout
+
+```
+├── web/          the Next.js site (see web/README.md to run or deploy it)
+├── src/          collection scripts, the relevance filter, and the analysis/report pipeline
+├── data/         collected feedback and the manual tags
+└── outputs/      ranked blockers and the blocker x category crosstab, as CSV
 ```
 
-## Data provenance
-- **One counted bucket:** all corpus items are real user feedback — Play Store reviews
-  (`com.fsn.nds`), scraped Trustpilot / PissedConsumer / Quora, and Reddit + community
-  discussion about wishlist shopping.
-- **Excluded:** AI-synthesised or paraphrased text is never counted as user feedback.
-- **Blocked in collection:** App Store India returned 0 reviews; Reddit and most forums
-  were IP-blocked from the sandbox, so that material was collected separately.
+## Running the analysis
 
-## Key finding (provisional)
-Nykaa's public post-purchase data shows a **confidence problem** (trust/authenticity,
-quality, price-deferral, validation, fit). The **decision-graveyard** blockers
-(choice_overload, context_loss) are strong in **external** evidence but nearly absent in
-reviews — a **sampling artifact**, and the central question for Part 3. See `FINDINGS.md`.
+```bash
+python -m pip install -r requirements.txt
+python src/run_all.py          # applies the tags, regenerates outputs/
+```
 
-## Public website (the "testable link")
-A Next.js app in [`web/`](web/), deployable to Vercel. Powered by **Google Gemini**
-(`GEMINI_API_KEY`, server-side only in `/api/analyze` — the browser never sees the key or
-any backend detail). Presents two lenses — **Lens 1: what users tell us** (raw frequency)
-and **Lens 2: where the opportunity is** (re-ranked by actionability) — plus **Discovery
-Questions**, a **How-it-works** panel, and a live **Analyzer** that appends pasted feedback
-to the corpus and recomputes both lenses. `npm run retag` re-tags the whole base corpus with
-the same Gemini classifier. See [`web/README.md`](web/README.md) for local run and Vercel deploy.
+## Running the site
+
+```bash
+cd web
+npm install
+cp .env.example .env.local     # add GEMINI_API_KEY and GROQ_API_KEY
+npm run dev
+```
+
+The two keys are read server-side only and are never exposed to the browser: Gemini powers
+the Live Analyzer, Groq powers the Ask Assistant. The dashboard needs no keys. Full setup and
+deployment notes are in [`web/README.md`](web/README.md).
