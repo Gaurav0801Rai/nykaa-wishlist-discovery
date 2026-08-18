@@ -1,168 +1,154 @@
-# Project Summary — Nykaa Fashion Wishlist→Purchase Discovery Engine (Part 1)
+# Project Summary — Nykaa Fashion Wishlist→Purchase Discovery Engine
 
-> Hand-off doc. Paste this into another chat to bring it up to speed, or read it to
-> understand exactly what exists and what's pending. Last updated: 2026-08-16.
-
----
-
-## 1. What this project is
-A PM case study for **Nykaa Fashion** (a multi-category platform: apparel, footwear,
-watches, sunglasses, bags, belts, jewellery, makeup).
-
-- **Strategic goal:** increase the % of users who **purchase ≥1 wishlisted item within
-  30 days** of adding it.
-- **Hard constraint:** **no monetary incentives** — levers are confidence, recall,
-  decision support.
-- **This repo = Part 1 only: the AI-Powered Discovery Engine.** It discovers *which
-  blocker* stops wishlist→purchase, then feeds Part 3 (survey/interviews) and Part 5 (MVP).
-- **Lens:** investigate the wishlist as a whole (a 40–50 item mixed list) **across all
-  categories**, not per-product fit. Tag **all** candidate blockers (including the
-  clothing-only ones) and let frequency rank them — never rig toward a preferred answer.
+> Hand-off doc: what exists, how it was built, and how to run it.
+> Last updated: 2026-08-18.
 
 ---
 
-## 2. Pipeline (7 stages, each a re-runnable script in `src/`)
-| Stage | Script(s) | Output |
-|------|-----------|--------|
-| 1 Collect | `collect_playstore.py`, `collect_appstore.py`, `collect_reddit.py`, `collect_forums.py`, `collect_websearch.py`, `ingest_provided.py`, `ingest_md.py` | `data/raw/*.json` |
-| 2 Filter | `filter.py` | `data/filtered.json`, `data/rejected.json` |
-| 3 Classify | `classify.py` | `data/classified.json` |
-| 4 Quantify | `quantify.py` | `outputs/opportunity_ranking.csv` |
-| 5 Segment | `segment.py` | `outputs/segment_crosstab.csv`, `outputs/blocker_by_buyersegment.csv` |
-| 6 Synthesize | `synthesize.py` | `FINDINGS.md`, `outputs/tag_spotcheck.md` |
-| 7 Handoff | `handoff.py` | `research_hypotheses.md`, `interview_guide.md` |
-| — Browser | `app.py` (Streamlit) | the "testable link" |
-| — Orchestrator | `run_all.py` | runs Stages 2–7 |
+## 1. What this is
+A PM case study for **Nykaa Fashion** (multi-category: apparel, footwear, watches,
+sunglasses, bags, belts, jewellery, makeup).
+
+- **Goal:** increase the share of users who buy at least one wishlisted item within 30 days
+  of saving it.
+- **Constraint:** no monetary incentives — the levers are confidence, recall and decision support.
+- **This repo is the discovery engine**: it finds *which blockers* stop a saved item from
+  being bought, across all categories, from public user feedback.
+- **Deliverable:** a live website (Vercel) plus a reproducible analysis in this repo.
+
+**Live site:** https://nykaa-wishlist-discovery.vercel.app
+**Repo:** https://github.com/Gaurav0801Rai/nykaa-wishlist-discovery
 
 ---
 
-## 3. Data sources — what worked vs. what was blocked
-Collected from **this environment** (a sandbox with datacenter IP):
+## 2. How the analysis was produced
+| Step | Script | Output |
+|------|--------|--------|
+| Collect | `collect_playstore.py`, `collect_appstore.py`, `collect_reddit.py`, `collect_forums.py`, `collect_websearch.py`, `ingest_provided.py`, `ingest_extra.py` | `data/raw/*.json`, `data/extra_raw.json` |
+| Filter | `filter.py` | `data/filtered.json`, `data/rejected.json` |
+| Analyse | manual review recorded in `data/claude_tags*.json`, applied by `apply_tags.py` | `web/src/data/classified.json` |
+| Report | `report.py` | `outputs/*.csv`, `FINDINGS.md` |
+| Orchestrate | `run_all.py` | applies tags + regenerates reports |
 
-| Source | Result | Notes |
-|--------|--------|-------|
-| **Play Store** (`com.fsn.nds`, in) | ✅ **413** reviews | primary data; spans categories |
-| **Real scraped** (Trustpilot/PissedConsumer/Quora — from File 1 below) | ✅ **25** | primary Nykaa voice |
-| **Open web** (Vice, Medium, MarketExpress, Kissmetrics, SellersCommerce, Shopify, MDPI + benchmarks) | ✅ **26** | **EXTERNAL** — never in Nykaa % |
-| App Store iOS (`id1439872423`) | ⚠️ 0 | Apple RSS returns no `in` reviews (real gap) |
-| Reddit | ⛔ 0 | 403 — Reddit blocks datacenter IPs |
-| Trustpilot/PissedConsumer/Quora (live) | ⛔ blocked | anti-bot/timeout from sandbox |
-
-**Store IDs (confirmed):** Play `com.fsn.nds` · iOS `1439872423`. (Nykaa *Beauty* app,
-excluded per your instruction: Play `com.fsn.nykaa`, iOS `1022363908`.)
-
-**seed_sources.md health:** of the 30 links, only ~4 were usable from here; **6 are dead
-(404/301)** and **PMC10418091 is mislabeled** (loads a microbiology paper). Worth fixing.
+**Method:** thematic (multi-label) classification, not sentiment analysis. Every one of the
+276 items was read and tagged by hand against a 15-blocker taxonomy. An item can carry
+several blockers, so percentages do not sum to 100. Items showing no blocker were left
+untagged rather than forced into one (29 of them). `data/claude_tags*.json` is the audit trail.
 
 ---
 
-## 4. The two markdown files you provided (how each was used)
-- **`nykaa_fashion_raw_scraped_data.md` (RAW / real):** ingested as **primary Nykaa data**
-  via `src/ingest_provided.py` → 25 items (Trustpilot 12, PissedConsumer 2, Quora 11 after
-  dedup). Dropped the one "(Bot/Assistant)" Quora answer and the Voxya boilerplate.
-- **`nykaa_fashion_failed_sources_synthesized.md` (SYNTHESIZED):** its own header says it's
-  synthesized from snippets/memory. It contains **fabricated quotes and invented stats**, so
-  it is **quarantined** — none of it enters the Nykaa corpus (project rule: *NO FABRICATED
-  NUMBERS*). Only its well-established **benchmarks** (Iyengar jam 3%/30%, Baymard ~70% cart
-  abandonment, Boldmetrics 70% sizing / 36% returns) are used, **labelled external +
-  unverified**, and its UX claims became **Part-3 hypotheses**.
+## 3. The corpus — 276 items
+| Source | Items |
+|--------|------:|
+| Play Store (`com.fsn.nds`, India) | 159 |
+| Reddit | 84 |
+| Community & web | 13 |
+| Review forums (Trustpilot, PissedConsumer) | 10 |
+| Q&A sites (Quora) | 10 |
 
-> If you want to *legitimately* add the blocked sources (Reddit/Quora/Trustpilot/YouTube),
-> collect their **verbatim** text (e.g. from your home network) into the format in
-> `data/kimi_import_TEMPLATE.md`, then run `python src/ingest_md.py data/kimi_import.md`.
+**Known gaps:** App Store India returns 0 reviews via Apple's public RSS. Reddit and most
+forums were IP-blocked from the sandbox, so that material was collected separately and
+ingested. AI-synthesised or paraphrased text is never counted as user feedback.
 
----
-
-## 5. Results (provisional)
-Corpus **481 collected → 205 kept** (179 primary Nykaa + 26 external), **276 rejected**
-(logged reasons: pure-delivery 103, too-short 72, customer-care-ops 35, refund-dispute 22, …).
-
-**Ranked blockers — % of 179 primary Nykaa items** (reproducible from `data/classified.json`):
-
-| Blocker | Nykaa # | Nykaa % | External # |
-|---------|--------:|--------:|-----------:|
-| trust_authenticity | 65 | 36.3% | 1 |
-| quality_doubt | 45 | 25.1% | 0 |
-| price_wait | 38 | 21.2% | 1 |
-| confidence_validation_gap | 29 | 16.2% | 0 |
-| fit_size_doubt | 23 | 12.8% | 4 |
-| within_category_compare_gap | 18 | 10.1% | 1 |
-| occasion_timing | 13 | 7.3% | 0 |
-| delivery_return_friction | 12 | 6.7% | 0 |
-| endless_search_deferral | 7 | 3.9% | 5 |
-| size_or_stock_gone | 4 | 2.2% | 1 |
-| context_loss | 3 | 1.7% | 5 |
-| choice_overload | **0** | 0% | **13** |
-| cross_sell_miss | 0 | 0% | 1 |
-
-**Headline finding:** Nykaa's public (post-purchase, negative-skewed) data shows a
-**CONFIDENCE problem** — trust/authenticity, quality, price-deferral, validation, fit. The
-**DECISION-GRAVEYARD** hypothesis (choice_overload, context_loss) is strong in **external**
-evidence but nearly **invisible in reviews** — because people who defer a saved item don't
-write reviews. That's a **sampling artifact**, so it's the **central question for Part 3**,
-not a disproven idea. We don't crown it on external data, nor bury it on a biased sample.
+**Store IDs:** Play `com.fsn.nds` · iOS `1439872423`. (Nykaa Beauty deliberately excluded.)
 
 ---
 
-## 6. Two things still pending (by design)
-1. **Mandatory ~20-item tag spot-check** → `outputs/tag_spotcheck.md`. Stage-3 tags are
-   `heuristic_v0` (deterministic keyword rules — **no LLM used**), so **all numbers are
-   provisional** until reviewed.
-2. **Optional model re-tag.** `ANTHROPIC_API_KEY` is **not set** in the sandbox, so the
-   Anthropic (Haiku) bulk tagging did not run. With a key:
-   `python src/classify.py --use-api --yes` then `python src/run_all.py`.
+## 4. Results
+**Ranked blockers (share of 276):**
+
+| # | Blocker | Items | % |
+|---|---------|------:|--:|
+| 1 | Delivery / return friction | 158 | 57.2% |
+| 2 | Trust / authenticity | 63 | 22.8% |
+| 3 | Price wait | 42 | 15.2% |
+| 4 | Quality doubt | 38 | 13.8% |
+| 5 | Decision paralysis | 30 | 10.9% |
+| 6 | Confidence / validation gap | 23 | 8.3% |
+| 7 | Fit / size doubt | 23 | 8.3% |
+| 8 | Comparison gap | 21 | 7.6% |
+| 9 | Bookmarking, no intent | 17 | 6.2% |
+| 10 | Context loss / wishlist visibility | 15 | 5.4% |
+| 11 | Occasion / timing | 10 | 3.6% |
+| 12 | Size / stock gone | 10 | 3.6% |
+
+*Decision paralysis merges choice overload and endless search/deferral — two sides of one
+behaviour: options stay open and no decision is reached.*
+
+**By theme:**
+
+| Theme | Items | % |
+|-------|------:|--:|
+| Post-purchase | 158 | 57.2% |
+| Confidence gap | 116 | 42.0% |
+| Decision friction | 67 | 24.3% |
+| Value & timing | 50 | 18.1% |
+| Availability | 10 | 3.6% |
+
+**What it shows:** public review writing is dominated by what happens *after* checkout —
+fulfilment and the confidence cluster (trust, quality, fit, validation), both reported by
+people who already ordered. Friction while an item is still *saved* is a distinct, smaller
+signal, led by decision paralysis, the comparison gap, saving without buying, and context
+loss. Category profiles differ: apparel carries fit and quality doubts, beauty is led by
+validation-seeking and price waiting.
 
 ---
 
-## 7. How to run it locally (Windows)
-From the project folder (`C:\Users\Gaurav Kumar\Desktop\nykaa-discovery`):
+## 5. The website (`web/`)
+Next.js (App Router), deployed on Vercel with **Root Directory = `web`**. Three views:
 
+- **Ask Assistant** — chatbot grounded in this corpus, with the discovery questions as
+  shortcuts. Answers are short, cite real numbers, and do not prescribe solutions.
+- **Dashboard** — corpus stats and source mix; the ranked blockers with counts and %,
+  each expanding to a short summary plus 3–4 real verbatims; an opportunity view that
+  re-reads the same blockers by where in the journey they occur; and observations.
+- **Live Analyzer** — paste reviews (max 20) and they are classified live against the same
+  taxonomy. Session-only: nothing is saved or shared, and the base corpus never changes.
+
+**Keys (server-side only, never sent to the browser):**
+- `GEMINI_API_KEY` — Live Analyzer (`gemini-3.5-flash`)
+- `GROQ_API_KEY` (+ `GROQ_API_KEY_2` for rotation) — Ask Assistant (`openai/gpt-oss-20b`)
+
+The static analysis is **not** produced by an LLM; Gemini only classifies text a visitor
+pastes into the Analyzer.
+
+**Integrity check:** `npm run check` verifies every displayed quote exists in the corpus, is
+tagged with the blocker it appears under, and is verbatim. It runs on every build.
+
+---
+
+## 6. How to run it
+
+**Analysis (offline, no keys needed):**
 ```bash
-# 1. Install dependencies
 python -m pip install -r requirements.txt
-
-# 2. (optional) Re-collect Play Store etc. — needs internet; may be blocked on some networks
-python src/collect_playstore.py
-python src/collect_websearch.py
-python src/ingest_provided.py "C:/Users/Gaurav Kumar/Downloads/nykaa_fashion_raw_scraped_data.md"
-
-# 3. Run the analysis end-to-end (Stages 2–7). Data is already in data/raw/, so this works offline
 python src/run_all.py
-
-# 4. Launch the browser app (opens at http://localhost:8501)
-streamlit run app.py
 ```
 
-Notes:
-- If `streamlit` isn't found, use `python -m streamlit run app.py`.
-- The app reads `data/classified.json` + `outputs/*.csv`. If it errors, run step 3 first.
-- Windows console: scripts already force UTF-8; if you see encoding errors, prefix with
-  `python -X utf8 ...`.
-- To deploy the "testable link": push to GitHub → Streamlit Community Cloud → main file `app.py`.
+**Website:**
+```bash
+cd web
+npm install
+cp .env.example .env.local   # add GEMINI_API_KEY and GROQ_API_KEY
+npm run dev                  # http://localhost:3000
+```
+
+**Deploy:** import the repo on Vercel → Root Directory `web` → add the env vars → deploy.
 
 ---
 
-## 8. Repo map
+## 7. Repo map
 ```
 nykaa-discovery/
-├── CLAUDE.md, seed_sources.md, README.md, summary.md
+├── CLAUDE.md, README.md, summary.md, seed_sources.md, FINDINGS.md
 ├── requirements.txt, .env.example
-├── src/               # all pipeline stages + run_all.py + common.py
+├── src/                 collectors, filter.py, apply_tags.py, report.py, run_all.py
 ├── data/
-│   ├── raw/*.json      # collected items (play_store, provided_scraped, web, …)
-│   ├── filtered.json, rejected.json, classified.json
-│   └── kimi_import_TEMPLATE.md
-├── outputs/            # opportunity_ranking.csv, segment_crosstab.csv,
-│   │                     blocker_by_buyersegment.csv, tag_spotcheck.md
-├── FINDINGS.md, research_hypotheses.md, interview_guide.md
-├── app.py              # Streamlit browser
-├── cache/, logs/
+│   ├── raw/*.json       collected items
+│   ├── claude_tags*.json   the manual analysis (audit trail)
+│   ├── extra_raw.json, verified_extra.json
+│   └── filtered.json, rejected.json
+├── outputs/             opportunity_ranking.csv, segment_crosstab.csv
+├── web/                 the Next.js site (see web/README.md)
+└── app.py               early Streamlit prototype, superseded by web/
 ```
-
----
-
-## 9. What to do next
-1. Run locally (section 7) and open the app.
-2. Do the **tag spot-check** (`outputs/tag_spotcheck.md`) — fix any wrong tags.
-3. Decide: add real Reddit/Quora data via `ingest_md.py`, and/or run the paid API re-tag.
-4. Then the numbers lock, and Part 3 (interviews) runs off `interview_guide.md`.

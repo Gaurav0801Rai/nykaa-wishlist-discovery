@@ -1,11 +1,10 @@
 """
-Run the whole analysis pipeline end-to-end (Stages 2-6) from whatever is already
+Run the analysis pipeline end-to-end (filter, classify, report) from whatever is already
 in data/raw/. Collection scripts are run separately (network-dependent); this
 re-runs the deterministic analysis so outputs are reproducible.
 
 Usage:
-  python run_all.py            # heuristic_v0 tagging (free)
-  python run_all.py --use-api  # Anthropic Haiku tagging (paid; needs key + --yes)
+  python run_all.py
 """
 from __future__ import annotations
 
@@ -15,11 +14,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 STAGES = [
-    ("Stage 2 filter", ["filter.py"]),
-    ("Stage 3 classify", ["classify.py"] + sys.argv[1:]),
-    ("Stage 4 quantify", ["quantify.py"]),
-    ("Stage 5 segment", ["segment.py"]),
-    ("Stage 6 synthesize", ["synthesize.py"]),
+    ("Apply manual analysis", ["apply_tags.py"]),
+    ("Report (ranking, crosstab, FINDINGS)", ["report.py"]),
 ]
 
 
@@ -31,7 +27,7 @@ def main() -> int:
             print(f"!! {name} exited {r.returncode}; stopping.")
             return r.returncode
     print("\nPipeline complete. See FINDINGS.md and outputs/. "
-          "Browse: streamlit run app.py")
+          "Site: cd web && npm run dev")
     return 0
 
 
