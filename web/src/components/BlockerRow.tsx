@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ClassifiedItem } from "@/lib/types";
 import { blockerLabel, BLOCKERS } from "@/lib/taxonomy";
+import { EVIDENCE } from "@/lib/evidence";
 
 export default function BlockerRow({
   code,
@@ -24,8 +25,22 @@ export default function BlockerRow({
   note?: string;
 }) {
   const [open, setOpen] = useState(false);
-  // Show a few substantive, distinct verbatims per blocker (no source labels).
+  const evidence = EVIDENCE[code];
+
+  // Prefer the hand-checked verbatims for this blocker; fall back to the
+  // longest distinct quotes if none are curated.
   const quotes = (() => {
+    if (evidence) {
+      const byId = new Map(items.map((it) => [it.id, it]));
+      const picked = evidence.quoteIds
+        .map((id) => byId.get(id))
+        .filter((it): it is ClassifiedItem => !!it)
+        .map((it) => ({
+          it,
+          q: (evidence.exact?.[it.id] || it.supporting_quote || it.text).trim(),
+        }));
+      if (picked.length >= 3) return picked.slice(0, 4);
+    }
     const seen = new Set<string>();
     return items
       .map((it) => ({ it, q: (it.supporting_quote || it.text).trim() }))
@@ -67,6 +82,7 @@ export default function BlockerRow({
       )}
       {open && (
         <div className="blk-quotes">
+          {evidence && <p className="blk-summary">{evidence.summary}</p>}
           {quotes.length === 0 && <p className="muted small">No quotes available.</p>}
           {quotes.map(({ it, q }) => (
             <div className="quote" key={it.id}>“{q.slice(0, 240)}”</div>

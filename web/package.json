@@ -7,10 +7,11 @@
     "dev": "next dev",
     "sync-data": "node scripts/sync-data.mjs",
     "retag": "node scripts/retag-corpus.mjs",
-    "prebuild": "node scripts/sync-data.mjs",
+    "prebuild": "node scripts/sync-data.mjs && node scripts/check-evidence.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check": "node scripts/check-evidence.mjs"
   },
   "dependencies": {
     "next": "14.2.15",

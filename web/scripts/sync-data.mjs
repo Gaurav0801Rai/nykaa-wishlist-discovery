@@ -28,7 +28,19 @@ let extra = [];
 const extraPath = join(ROOT, "data", "extra_raw.json");
 if (existsSync(extraPath)) extra = readJSON(extraPath);
 
-const corpusBase = [...nykaa, ...extra];
+let verified = [];
+const verifiedPath = join(ROOT, "data", "verified_extra.json");
+if (existsSync(verifiedPath)) {
+  verified = readJSON(verifiedPath).map((v, i) => ({
+    id: `verified_${i}`,
+    source: v.source,
+    text: v.text,
+    rating: null,
+  }));
+}
+
+// verified items go last so existing manual tag indices stay stable
+const corpusBase = [...nykaa, ...extra, ...verified];
 write("corpus_base.json", corpusBase);
 
 // source grouping (mirrors web/src/lib/taxonomy.ts sourceGroup)

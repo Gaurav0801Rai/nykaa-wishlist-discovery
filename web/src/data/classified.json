@@ -3445,5 +3445,17 @@
     "supporting_quote": "Cognitive load increases, and worst of all, intent to purchase often vanishes.",
     "rating": null,
     "tagging_method": "manual_review"
+  },
+  {
+    "id": "verified_0",
+    "source": "reddit",
+    "text": "Nykaa's wishlist is so inconvenient to use",
+    "blocker_codes": [
+      "context_loss"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "Nykaa's wishlist is so inconvenient to use",
+    "rating": null,
+    "tagging_method": "manual_review"
   }
 ]

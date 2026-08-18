@@ -1,0 +1,9 @@
+[
+  {
+    "source": "reddit",
+    "text": "Nykaa's wishlist is so inconvenient to use",
+    "note": "Verbatim post title, r/IndianMakeupAddicts. Body was removed by Reddit's filters, so only the title is used.",
+    "blockers": ["cl"],
+    "category": "un"
+  }
+]
