@@ -16,6 +16,16 @@ export interface Evidence {
 }
 
 export const EVIDENCE: Record<string, Evidence> = {
+  decision_paralysis: {
+    summary:
+      "Options stay open and nothing gets decided. Shoppers describe holding several near-identical products they cannot choose between, and browsing sessions where saving becomes the activity instead of buying.",
+    quoteIds: [
+      "reddit_cb56e65643ab",
+      "community_ae7373efd632",
+      "community_e69b4f702248",
+      "reddit_ed4aac2e1447",
+    ],
+  },
   context_loss: {
     summary:
       "Shoppers describe saved lists that grow past the point of being useful. They talk about items piling up over months, lists that cannot be sorted or filtered, and returning to a save without recalling why they made it.",
@@ -24,26 +34,6 @@ export const EVIDENCE: Record<string, Evidence> = {
       "reddit_a56794ecff9f",
       "community_e33ea208fb5f",
       "reddit_b8ff1ffe50f3",
-    ],
-  },
-  choice_overload: {
-    summary:
-      "When several saved options look equally plausible, shoppers stall. They describe holding many near-identical products, asking others to break the tie, and abandoning the session rather than choosing.",
-    quoteIds: [
-      "reddit_cb56e65643ab",
-      "community_ae7373efd632",
-      "community_2fafb28cc195",
-      "reddit_9d364b508f17",
-    ],
-  },
-  endless_search_deferral: {
-    summary:
-      "Browsing and saving becomes the activity in itself. Shoppers describe filling a bag or list they never check out, and items sitting saved for months while the search continues.",
-    quoteIds: [
-      "community_e69b4f702248",
-      "reddit_ed4aac2e1447",
-      "community_4c4df5cf3287",
-      "reddit_7d9cd9bac73d",
     ],
   },
   bookmarking_no_intent: {

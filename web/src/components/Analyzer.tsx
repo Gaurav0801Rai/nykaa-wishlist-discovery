@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import type { AnalyzeResponse } from "@/lib/types";
-import { blockerLabel, categoryLabel } from "@/lib/taxonomy";
+import { blockerLabel, categoryLabel, canonicalCode } from "@/lib/taxonomy";
 
 // A varied pool of realistic shopper feedback. Each "Load example" run samples a
 // different mix — delivery, quality, fit, price, comparison, browsing — so the
@@ -58,7 +58,10 @@ export default function Analyzer() {
   const ranked = useMemo(() => {
     if (!data) return [];
     const m = new Map<string, number>();
-    for (const r of data.results) for (const c of r.blocker_codes) m.set(c, (m.get(c) || 0) + 1);
+    for (const r of data.results) {
+      const codes = new Set(r.blocker_codes.map(canonicalCode));
+      for (const c of codes) m.set(c, (m.get(c) || 0) + 1);
+    }
     return [...m.entries()].sort((a, b) => b[1] - a[1]);
   }, [data]);
   const max = Math.max(...ranked.map((r) => r[1]), 1);
@@ -150,7 +153,7 @@ export default function Analyzer() {
                   <p style={{ margin: "0 0 10px" }}>{r.text}</p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {r.blocker_codes.length ? (
-                      r.blocker_codes.map((c) => <span className="chip" key={c}>{blockerLabel(c)}</span>)
+                      [...new Set(r.blocker_codes.map(canonicalCode))].map((c) => <span className="chip" key={c}>{blockerLabel(c)}</span>)
                     ) : (
                       <span className="chip" style={{ opacity: 0.6 }}>no blocker detected</span>
                     )}

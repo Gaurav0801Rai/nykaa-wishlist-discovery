@@ -2320,7 +2320,7 @@
     "source": "reddit",
     "text": "At first mine was overwhelming but as I've crossed things off it's quite short now.\n\nI get that curating a wishlist is still a lot of thinking about shopping so it's not the ideal solution for everyone",
     "blocker_codes": [
-      "choice_overload",
+      "decision_paralysis",
       "context_loss"
     ],
     "category_signal": "unknown_general",
@@ -2361,7 +2361,7 @@
     "text": "One thing I've done is allow myself to browse online and add anything to my cart that I want. I still get the thrill of \"adding to cart\" but I do not check out. I just leave the cart full and leave the site. I'll do this with as many stores as I think of as often as I want. I find it helps full the \"I wanna shop\" compulsion but saves $ but I don't actually purchase. Could be worth a try.",
     "blocker_codes": [
       "bookmarking_no_intent",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "I still get the thrill of \"adding to cart\" but I do not check out.",
@@ -2464,7 +2464,7 @@
     "source": "reddit",
     "text": "so true! puma ones were very overwhelming. even nykaa through the whole pink Friday sale. i kept comparing prices through nykaa and myntra all the while, and it was so so tiring and time consuming. now I realize with one less week left for my prep, that I fucking wasted it all! now I've given up my phone, along with those damned apps",
     "blocker_codes": [
-      "choice_overload",
+      "decision_paralysis",
       "within_category_compare_gap",
       "price_wait"
     ],
@@ -2492,7 +2492,7 @@
     "text": "I kinda have mastered the art of resistance 😅. \n1. Never shop on empty stomach \n2. Put the item in cart [works for both in person vs online shopping] and let it stew [the most difficult thing ] if you need it buy and if not put it back.\n3. Always remember sales never end..so if you miss it this time, there's always a next 😅",
     "blocker_codes": [
       "bookmarking_no_intent",
-      "endless_search_deferral",
+      "decision_paralysis",
       "price_wait"
     ],
     "category_signal": "unknown_general",
@@ -2505,7 +2505,7 @@
     "source": "reddit",
     "text": "Man, I get you. I have been so tempted with smytten but I know my tendencies. That's why I have never opened that website.   \n\nI suggest you remove some apps that you absolutely do not need. Strip back your wish list to the bare minimum and only buy things you use regularly on sale or when you run out of them.",
     "blocker_codes": [
-      "choice_overload",
+      "decision_paralysis",
       "price_wait"
     ],
     "category_signal": "makeup_beauty",
@@ -2544,7 +2544,7 @@
     "text": "i so agree! i also tend to forget most of the people in this sub have a separate life lol. some of these people are people who wait an entire year for good offers to buy stuff unlike me. all the posts of \"this product at a shocking price!\" give me endless fomo",
     "blocker_codes": [
       "price_wait",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "all the posts of \"this product at a shocking price!\" give me endless fomo",
@@ -2579,7 +2579,7 @@
     "text": "Mann, my boyfriend will have to take a huge loan to buy my wishlist (I've accumulated gazillion items over many years)",
     "blocker_codes": [
       "context_loss",
-      "choice_overload"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "Mann, my boyfriend will have to take a huge loan to buy my wishlist (I've accumulated gazillion items over many years)",
@@ -2592,7 +2592,7 @@
     "text": "I'm in a toxic relationship with my wishlist 😭",
     "blocker_codes": [
       "context_loss",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "I'm in a toxic relationship with my wishlist 😭",
@@ -2650,7 +2650,7 @@
     "source": "reddit",
     "text": "So I recently purchased these both. Became of the hype and here my review for the same.\n\nMy hair type is low porosity. Wavy hair and myvhair length is medium and I have a bit thick hair also. \n\nREDKEN :  First I used redken as I received it first and this was in my wishlist for a long time. Got it from Nykaa man for 1.7k.  i applied on a damp hair and then air dried my hair. I know people love the grahan of Redken one but personally I didn't like the fragrance that much.  \n\nI used it on damp hair and air dried it. And omg I have never felt my hair this frizz free tbh. I could easily detangle my hair .My hair always looks so dry after hair wash. But this made my hair so so soft and shiney. And next day I felt my hair is even more softer. So I will give 10/10 for this product for sure. Fragrance I'll get used to of it and I don't mind tbh because it's not that bad too\n\nLOREAL NO CUT HAIR CREAM:  First thing first, i freaking love how does this cream smell tbh. So so beautiful fragrance it has and it lingers on hair too. This also I used on damp hair. I could easily detangle my hair after using it. I air dried my hair for this also. I agree it's a beautiful formula and makes my hair frizz free. But it didn't make my hair softer and shiny like how redken did. Even next day also same not much difference too . So I will give 8/10.\n\nI'll definitely use both of these products. And I feel for low porosity hair Loreal one is not that great.  This is my personal opinion. It might suit for your hair and hair type. So I'm again saying this is what I felt when I used these products.\n\nIf you have any questions please free to ask me.. I'll answer for sure. TIA💗🎀",
     "blocker_codes": [
-      "endless_search_deferral",
+      "decision_paralysis",
       "confidence_validation_gap"
     ],
     "category_signal": "makeup_beauty",
@@ -2664,7 +2664,7 @@
     "text": "I’d never be able to clear my wish list 😭😭🙏 anyways happy for you !!! 🤍🫶",
     "blocker_codes": [
       "context_loss",
-      "choice_overload"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "I’d never be able to clear my wish list 😭😭🙏 anyways happy for you !!!",
@@ -2750,7 +2750,7 @@
     "source": "reddit",
     "text": "Absolutely true ..being a hoarder myself of good deals and trying every new product in market ..having soo many products of same step ..i was not seeing changes i was constantly feeling the need to buy more on good discounts and my wallet was suffering then i came across the r/indianpanporn and whole project pan ..i started using the products and no buy till i run out of it ..cause after years of buying on great discounts now i have realised there will always be good discounts all year round ..so now i just buy what worked for me ..and rebuy same stuff even if i want to experiment or try new i wait till my current product gets over ..this has been helpful in my makeup as well ..now i dont own many blushes or lipstick even when they dont work so well ..i will use them up first ..Thankyouu for your post 🙌💖",
     "blocker_codes": [
-      "choice_overload",
+      "decision_paralysis",
       "price_wait"
     ],
     "category_signal": "makeup_beauty",
@@ -2764,7 +2764,7 @@
     "text": "Oh my God, I so agree with what you’re saying back when I hadn’t joined Reddit. I just used to buy what I need whenever I needed it, and yes if I’m getting like a decent discount here and there that’s good, but now it’s always like I’m scrolling and I’ll see a post about some offer and either I’ll impulse buy it because I think it’s such a good offer or I’ll be disappointed as to why I bought that product earlier - it’s a lose lose game either way",
     "blocker_codes": [
       "price_wait",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "I just used to buy what I need whenever I needed it, and yes if I’m getting like a decent discount here and there that’s good, but now it’s always like I’m scrolling and I’ll see a post about some offer and either I’ll impulse buy",
@@ -2776,7 +2776,7 @@
     "source": "reddit",
     "text": "My birthday is coming up, so I decided to gift myself this Fenty Beauty’s Gloss Bomb Stick in the shade spice cold. It was on my wishlist forever! It’s such a lovely nude lip gloss, and the formula feels nice too. I am very happy!🥹",
     "blocker_codes": [
-      "endless_search_deferral",
+      "decision_paralysis",
       "occasion_timing"
     ],
     "category_signal": "makeup_beauty",
@@ -2799,7 +2799,7 @@
     "source": "reddit",
     "text": "Gurliess my bday is coming up and my brother asked me to order whatever I want from nykaa , he'll pay. So I want a skin tint but can't decide on which one to buy ( i have dry skin with light skintone and neutral undertone ) , also suggest a fruity-gourmand mist, and reccos on serums to defy  face pigmentation.  Please help out <3333",
     "blocker_codes": [
-      "choice_overload",
+      "decision_paralysis",
       "confidence_validation_gap",
       "occasion_timing"
     ],
@@ -2813,7 +2813,7 @@
     "source": "reddit",
     "text": "hey members;\n\nas we are leaning towards end of the year, I'm sure this year must have been about from trials&errors to finally finding holy grails, from discovering an underrated gem to getting dissatisfied from an overhype purchase. The hunt never stops neither our love and excitement to try something unique. Every year, we keep ticking off our wishlist whilst adding more to it. So, with all the sales now being ended, what are best or worst findings [in makeup, we will do skincare edition another time] of the year 2025? Please do share swatches of the said products as well if you wish so. Share what and why you love/hate that specific product(s). Looking forward to beautiful responses and who knows how many more people end up getting them as well..?\n\np.s: 1) OP's 2025 find is guerlain rouge G satin lipstick in shade 06\n\n2) enjoying all the responses on this post, keep'em coming!",
     "blocker_codes": [
-      "endless_search_deferral",
+      "decision_paralysis",
       "confidence_validation_gap"
     ],
     "category_signal": "unknown_general",
@@ -2849,7 +2849,7 @@
     "text": "Something i discovered is this site that tells you which ingredients are highly comedogenic for acne prone skin. Half the products from my wish list were deleted thanks to it. Be it make up or skincare. I have learnt to first see if the ingredient will suit me.",
     "blocker_codes": [
       "confidence_validation_gap",
-      "choice_overload"
+      "decision_paralysis"
     ],
     "category_signal": "makeup_beauty",
     "supporting_quote": "Something i discovered is this site that tells you which ingredients are highly comedogenic for acne prone skin.",
@@ -2921,7 +2921,7 @@
     "text": "It's been in my wishlist for a couple of months now, everything else is pretty much affordable this is the only item I have to specifically wait for a good sale to buy",
     "blocker_codes": [
       "price_wait",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "It's been in my wishlist for a couple of months now, everything else is pretty much affordable this is the only item I have to specifically wait for a good sale to buy",
@@ -3086,7 +3086,7 @@
     "source": "reddit",
     "text": "I'd love that too. I wonder why no Indian brands reveal their PPD. Bioderma photoderm max cream (whose price is reduced to 699 Rs in India) has a PPD 42 if I remember correctly and it's on my wishlist but I haven't gotten around to trying it. The texture is not very cosmetically elegant I've heard. The Sebamed spf and Cetaphil sun kids should also probably meet your criteria, look into it.",
     "blocker_codes": [
-      "endless_search_deferral",
+      "decision_paralysis",
       "confidence_validation_gap",
       "quality_doubt"
     ],
@@ -3180,7 +3180,7 @@
     "source": "reddit",
     "text": "I have installed and uninstalled the app many times. Added products to cart and decided to checkout but again thought about the products I already own and then again decided to skip the purchase!",
     "blocker_codes": [
-      "endless_search_deferral",
+      "decision_paralysis",
       "bookmarking_no_intent"
     ],
     "category_signal": "unknown_general",
@@ -3227,7 +3227,7 @@
     "text": "Absolutely love your post and it's coming at a perfect timing. Most of us don't use half of what we buy. Mindful buying definitely gives us the control and a feeling of peace and pride that we finally didn't give up to the addiction. I usually purchase such stuff at late nights and I do the same as you, i wake up in the morning and cancel it immediately. It gives so much satisfaction for some reason and I don't feel bad that I didnt buy that product because I know that I don't need them, I only want them. I usually don't let them ship and cancel before that. I also shop from my wishlists most of the times, it keeps unwanted distractions away and lets us buy only necessary items.\n\nAlso, turning off notifications helps, a lot.",
     "blocker_codes": [
       "bookmarking_no_intent",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "Absolutely love your post and it's coming at a perfect timing.",
@@ -3285,7 +3285,7 @@
     "source": "community",
     "text": "there's a lot more looking and almost no purchasing",
     "blocker_codes": [
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "there's a lot more looking and almost no purchasing",
@@ -3297,7 +3297,7 @@
     "source": "community",
     "text": "It's an endless rabbit hole that can never be exhausted, and I think that's part of the comfort I get from it",
     "blocker_codes": [
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "It's an endless rabbit hole that can never be exhausted, and I think that's part of the comfort I get from it",
@@ -3322,7 +3322,7 @@
     "source": "community",
     "text": "Almost always, the thrill of the hunt, so to speak, is better than the kill",
     "blocker_codes": [
-      "endless_search_deferral",
+      "decision_paralysis",
       "bookmarking_no_intent"
     ],
     "category_signal": "unknown_general",
@@ -3335,7 +3335,7 @@
     "source": "community",
     "text": "I grew impatient as the process took 20 minutes and my husband was still undecided.",
     "blocker_codes": [
-      "choice_overload"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "I grew impatient as the process took 20 minutes and my husband was still undecided.",
@@ -3347,8 +3347,7 @@
     "source": "community",
     "text": "I just quit the process.",
     "blocker_codes": [
-      "choice_overload",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "I just quit the process.",
@@ -3360,7 +3359,7 @@
     "source": "community",
     "text": "I was of the notion how many shades of jeans could there be? a maximum of 10?",
     "blocker_codes": [
-      "choice_overload"
+      "decision_paralysis"
     ],
     "category_signal": "apparel_ethnic",
     "supporting_quote": "I was of the notion how many shades of jeans could there be?",
@@ -3373,7 +3372,7 @@
     "text": "Minutes later my Wishlist was overflowing and impossible to sort.",
     "blocker_codes": [
       "context_loss",
-      "choice_overload"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "Minutes later my Wishlist was overflowing and impossible to sort.",
@@ -3386,7 +3385,7 @@
     "text": "on desktop, with 105 saved items, I felt marooned.",
     "blocker_codes": [
       "context_loss",
-      "choice_overload"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "on desktop, with 105 saved items, I felt marooned.",
@@ -3425,7 +3424,7 @@
     "source": "community",
     "text": "The wishlist that was supposed to be your shortlist now feels cluttered and overwhelming.",
     "blocker_codes": [
-      "choice_overload",
+      "decision_paralysis",
       "context_loss"
     ],
     "category_signal": "unknown_general",
@@ -3438,8 +3437,7 @@
     "source": "community",
     "text": "Cognitive load increases, and worst of all, intent to purchase often vanishes.",
     "blocker_codes": [
-      "choice_overload",
-      "endless_search_deferral"
+      "decision_paralysis"
     ],
     "category_signal": "unknown_general",
     "supporting_quote": "Cognitive load increases, and worst of all, intent to purchase often vanishes.",

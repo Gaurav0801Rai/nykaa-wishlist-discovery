@@ -33,6 +33,15 @@ B = {
     "sg": "size_or_stock_gone", "su": "styling_uncertainty", "cs": "cross_sell_miss",
     "bn": "bookmarking_no_intent",
 }
+# Merged codes: choice_overload and endless_search_deferral describe the same
+# behaviour from two sides -- too many options open, and browsing/saving that
+# never reaches a decision. They are reported together as decision_paralysis.
+# The granular per-item tags stay in data/claude_tags*.json for audit.
+MERGE = {
+    "choice_overload": "decision_paralysis",
+    "endless_search_deferral": "decision_paralysis",
+}
+
 C = {
     "ap": "apparel_ethnic", "fw": "footwear", "wa": "watches", "sn": "sunglasses",
     "bg": "bags", "be": "belts", "jw": "jewellery", "mb": "makeup_beauty",
@@ -41,6 +50,7 @@ C = {
 
 # Phrases that make a good pull-quote for each blocker (for the expandable rows).
 QUOTE_HINTS = {
+    "decision_paralysis": r"overwhelm|too many|so many|can.t decide|how many|cluttered|quit the process|undecided|never bought|no purchasing|rabbit hole|thrill of the hunt|browsing|skip the purchase|hunt never stops|wishlist for",
     "context_loss": r"forgot|forget|remember|overflow|impossible to sort|marooned|cluttered|accumulat|clear my|\d{2,}\s*items|toxic relationship|hidden",
     "choice_overload": r"overwhelm|too many|so many|can'?t decide|how many|cluttered|quit the process|undecided",
     "endless_search_deferral": r"never bought|no purchasing|rabbit hole|thrill of the hunt|browsing|skip the purchase|haven'?t gotten around|wishlist for|forever|hunt never stops",
@@ -89,7 +99,13 @@ def main() -> int:
     out = []
     for i, item in enumerate(base):
         t = tags[str(i)]
-        codes = [B[x] for x in t.get("b", []) if x in B]
+        codes = []
+        for x in t.get("b", []):
+            if x not in B:
+                continue
+            code = MERGE.get(B[x], B[x])
+            if code not in codes:
+                codes.append(code)
         out.append({
             "id": item["id"],
             "source": item["source"],

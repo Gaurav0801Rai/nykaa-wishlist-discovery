@@ -13,6 +13,10 @@ export interface Actionability {
 }
 
 export const ACTIONABILITY: Record<string, Actionability> = {
+  decision_paralysis: {
+    weight: 3,
+    rationale: "Described while options are still open and nothing has been bought, entirely within browsing and saving.",
+  },
   context_loss: {
     weight: 3,
     rationale: "Described while the item is still saved and unbought, entirely inside the browsing experience.",

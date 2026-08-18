@@ -3,6 +3,7 @@
 // feedback contains, without prescribing fixes or stating a problem definition.
 
 export const BLOCKER_TYPE: Record<string, string> = {
+  decision_paralysis: "Decision friction",
   choice_overload: "Decision friction",
   context_loss: "Decision friction",
   within_category_compare_gap: "Decision friction",

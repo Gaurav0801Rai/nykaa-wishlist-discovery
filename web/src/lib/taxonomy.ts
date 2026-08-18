@@ -9,7 +9,20 @@ export interface BlockerMeta {
   blurb: string;
 }
 
+// choice_overload and endless_search_deferral are reported together as
+// decision_paralysis: options stay open and no decision is reached. The live
+// analyzer still receives the granular codes and folds them with MERGE below.
+export const MERGE: Record<string, string> = {
+  choice_overload: "decision_paralysis",
+  endless_search_deferral: "decision_paralysis",
+};
+
+export function canonicalCode(code: string): string {
+  return MERGE[code] ?? code;
+}
+
 export const BLOCKERS: Record<string, BlockerMeta> = {
+  decision_paralysis: { label: "Decision paralysis", blurb: "Keeps weighing and saving options without arriving at a decision." },
   choice_overload: { label: "Choice overload", blurb: "Too many options to decide between." },
   context_loss: { label: "Context loss / wishlist visibility", blurb: "Forgot why an item was saved; can't sort or find it in the wishlist." },
   within_category_compare_gap: { label: "Comparison gap", blurb: "Hard to compare similar saved items side by side." },
