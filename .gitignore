@@ -35,3 +35,4 @@ data/_*.json
 # local-only: project brief and generated report
 CLAUDE.md
 FINDINGS.md
+PART1.md
