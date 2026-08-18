@@ -55,7 +55,7 @@ THEME = {
     "delivery_return_friction": "Post-purchase",
 }
 CATS = ["apparel_ethnic", "footwear", "watches", "sunglasses", "bags",
-        "belts", "jewellery", "unknown_general"]
+        "belts", "jewellery", "makeup_beauty", "unknown_general"]
 
 SOURCE_GROUP = {
     "play_store": "Play Store", "app_store": "App Store", "reddit": "Reddit",

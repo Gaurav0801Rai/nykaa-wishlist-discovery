@@ -39,7 +39,7 @@ export function buildSystemPrompt(items: ClassifiedItem[]): string {
     for (const c of it.blocker_codes) e.b.set(c, (e.b.get(c) || 0) + 1);
   }
   const categories = [...byCat.entries()]
-    .filter(([k, v]) => k !== "unknown_general" && v.n >= 4)
+    .filter(([k, v]) => k !== "unknown_general" && k !== "makeup_beauty" && v.n >= 4)
     .sort((a, b) => b[1].n - a[1].n)
     .map(([k, v]) => {
       const top = [...v.b.entries()]
