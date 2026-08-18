@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { ClassifiedItem } from "@/lib/types";
-import { blockerLabel, BLOCKERS, sourceGroup } from "@/lib/taxonomy";
+import { blockerLabel, BLOCKERS } from "@/lib/taxonomy";
 
 export default function BlockerRow({
   code,
@@ -24,9 +24,21 @@ export default function BlockerRow({
   note?: string;
 }) {
   const [open, setOpen] = useState(false);
-  const quotes = items
-    .filter((it) => (it.supporting_quote || it.text).trim().length > 0)
-    .slice(0, 6);
+  // Show a few substantive, distinct verbatims per blocker (no source labels).
+  const quotes = (() => {
+    const seen = new Set<string>();
+    return items
+      .map((it) => ({ it, q: (it.supporting_quote || it.text).trim() }))
+      .filter(({ q }) => q.length >= 25)
+      .sort((a, b) => b.q.length - a.q.length)
+      .filter(({ q }) => {
+        const key = q.toLowerCase().slice(0, 45);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .slice(0, 4);
+  })();
 
   return (
     <div className="blk">
@@ -56,18 +68,9 @@ export default function BlockerRow({
       {open && (
         <div className="blk-quotes">
           {quotes.length === 0 && <p className="muted small">No quotes available.</p>}
-          {quotes.map((it) => {
-            // Only app-store items carry a 1-5 star rating; other sources store
-            // an upvote score, which must not be rendered as stars.
-            const isStore = it.source === "play_store" || it.source === "app_store";
-            const stars = isStore && it.rating ? ` · ${it.rating}★` : "";
-            return (
-              <div className="quote" key={it.id}>
-                “{(it.supporting_quote || it.text).slice(0, 240)}”
-                <span className="src">— {sourceGroup(it.source)}{stars}</span>
-              </div>
-            );
-          })}
+          {quotes.map(({ it, q }) => (
+            <div className="quote" key={it.id}>“{q.slice(0, 240)}”</div>
+          ))}
         </div>
       )}
     </div>
