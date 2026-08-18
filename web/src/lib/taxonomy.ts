@@ -48,7 +48,6 @@ export const CATEGORIES: Record<string, string> = {
   bags: "Bags",
   belts: "Belts",
   jewellery: "Jewellery",
-  makeup_beauty: "Makeup & beauty",
   unknown_general: "Unspecified",
 };
 

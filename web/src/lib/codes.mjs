@@ -27,6 +27,5 @@ export const CATEGORY_CODES = [
   "bags",
   "belts",
   "jewellery",
-  "makeup_beauty",
   "unknown_general",
 ];

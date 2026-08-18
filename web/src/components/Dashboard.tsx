@@ -125,8 +125,8 @@ export default function Dashboard({
       <section>
         <div className="card pad muted small">
           <strong>About the data.</strong> {methodology.user_feedback} pieces of real user feedback
-          from {sourceSentence}. Each one was read and tagged against 15 possible blockers, across
-          every product category.
+          from {sourceSentence}. Each one was read and tagged against 15 possible blockers, spanning
+          apparel, footwear, watches, sunglasses, bags and jewellery.
         </div>
       </section>
     </div>

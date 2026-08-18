@@ -117,8 +117,37 @@ def main() -> int:
             "tagging_method": "manual_review",
         })
 
+    # Nykaa Fashion sells fashion: apparel, ethnic, footwear, watches, sunglasses,
+    # belts, bags, jewellery. Beauty/makeup belongs to the separate Nykaa app, so
+    # feedback about beauty products is dropped to keep the study fashion-only.
+    dropped = [r for r in out if r["category_signal"] == "makeup_beauty"]
+    out = [r for r in out if r["category_signal"] != "makeup_beauty"]
+
     (WEBDATA / "classified.json").write_text(
         json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # methodology counts must reflect the fashion-only corpus
+    meth_path = WEBDATA / "methodology.json"
+    if meth_path.exists():
+        meth = json.loads(meth_path.read_text(encoding="utf-8"))
+        group = {
+            "play_store": "Play Store", "app_store": "App Store", "reddit": "Reddit",
+            "community": "Community & web", "quora": "Q&A sites",
+            "trustpilot": "Review forums", "pissedconsumer": "Review forums",
+            "voxya": "Review forums",
+        }
+        src_counts: dict[str, int] = {}
+        for r in out:
+            g = group.get(r["source"], "Other")
+            src_counts[g] = src_counts.get(g, 0) + 1
+        nykaa_sources = {"play_store", "trustpilot", "pissedconsumer", "quora", "voxya", "app_store"}
+        meth["user_feedback"] = len(out)
+        meth["sources"] = src_counts
+        meth["nykaa_items"] = sum(1 for r in out if r["source"] in nykaa_sources)
+        meth["added_items"] = sum(1 for r in out if r["source"] not in nykaa_sources)
+        meth_path.write_text(json.dumps(meth, ensure_ascii=False), encoding="utf-8")
+
+    print(f"Dropped {len(dropped)} beauty-category items (fashion-only scope)")
 
     from collections import Counter
     blk = Counter(b for r in out for b in r["blocker_codes"])

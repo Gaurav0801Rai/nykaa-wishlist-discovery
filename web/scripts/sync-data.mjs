@@ -53,8 +53,17 @@ function group(s) {
   if (["trustpilot", "pissedconsumer", "voxya"].includes(s)) return "Review forums";
   return "Other";
 }
+// Counts describe the published corpus. classified.json is the fashion-only set
+// written by apply_tags.py, so prefer it over the raw corpus_base when present.
+let counted = corpusBase;
+const classifiedForCounts = join(OUTDIR, "classified.json");
+if (existsSync(classifiedForCounts)) {
+  const cls = readJSON(classifiedForCounts);
+  if (Array.isArray(cls) && cls.length) counted = cls;
+}
+const nykaaSources = new Set(["play_store", "app_store", "trustpilot", "pissedconsumer", "quora", "voxya"]);
 const sources = {};
-for (const it of corpusBase) sources[group(it.source)] = (sources[group(it.source)] || 0) + 1;
+for (const it of counted) sources[group(it.source)] = (sources[group(it.source)] || 0) + 1;
 
 const rejectReasons = {};
 for (const r of rejected) {
@@ -63,16 +72,16 @@ for (const r of rejected) {
 }
 
 write("methodology.json", {
-  user_feedback: corpusBase.length,
-  nykaa_items: nykaa.length,
-  added_items: extra.length,
+  user_feedback: counted.length,
+  nykaa_items: counted.filter((it) => nykaaSources.has(it.source)).length,
+  added_items: counted.filter((it) => !nykaaSources.has(it.source)).length,
   sources,
   nykaa_collected: filtered.length + rejected.length,
   nykaa_rejected: rejected.length,
   reject_reasons: rejectReasons,
   gaps: [
     "App Store India returned 0 reviews via Apple's public RSS.",
-    "Reddit/community items are broad wishlist discussion (often beauty or general shopping), added to widen coverage of the save-and-defer moment reviews miss.",
+    "Reddit and community items are wishlist discussion added to widen coverage of the save-and-defer moment that app reviews miss.",
     "Product category is unspecified in most items, so category cuts are directional.",
     "Directional discovery signal — to be confirmed in Part-3 survey & interviews.",
   ],

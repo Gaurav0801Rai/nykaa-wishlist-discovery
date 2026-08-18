@@ -20,7 +20,7 @@ export const EVIDENCE: Record<string, Evidence> = {
     summary:
       "Options stay open and nothing gets decided. Shoppers describe holding several near-identical products they cannot choose between, and browsing sessions where saving becomes the activity instead of buying.",
     quoteIds: [
-      "reddit_cb56e65643ab",
+      "reddit_0f329ba04809",
       "community_ae7373efd632",
       "community_e69b4f702248",
       "reddit_ed4aac2e1447",
@@ -67,8 +67,8 @@ export const EVIDENCE: Record<string, Evidence> = {
       "Before committing, shoppers look for proof from other people. They ask groups what to pick, check ingredients or details themselves, and drop saved items when the answers do not reassure them.",
     quoteIds: [
       "reddit_44cf2f7950fc",
-      "reddit_db6b2b928bff",
-      "reddit_6c9f49670c09",
+      "play_store_84600995779d",
+      "play_store_fe83717d4b5c",
       "play_store_e2e6ab918c82",
     ],
   },
@@ -77,12 +77,11 @@ export const EVIDENCE: Record<string, Evidence> = {
       "Saved items are parked until the price moves. Shoppers describe holding a specific item for a sale, skipping a purchase when the discount does not appear, and waiting long stretches for the right offer.",
     quoteIds: [
       "reddit_22e96e25cfb9",
-      "reddit_dfa09773d68b",
+      "play_store_6ffc9f27900a",
       "reddit_357f23986a8b",
       "play_store_35674303cc9d",
     ],
     exact: {
-      reddit_dfa09773d68b: "I didnt see any discount on the ones that I wanted.",
       reddit_357f23986a8b:
         "some of these people are people who wait an entire year for good offers to buy stuff unlike me.",
     },
@@ -91,7 +90,7 @@ export const EVIDENCE: Record<string, Evidence> = {
     summary:
       "Doubt about whether an item is genuine, raised mostly after an order arrived. Shoppers report receiving copies of branded products, or items that do not match the listing.",
     quoteIds: [
-      "quora_d23c1c26a343",
+      "play_store_fd14d2f569ae",
       "play_store_353df902bb7c",
       "play_store_933719489167",
       "play_store_e5a38f9094a0",
@@ -123,7 +122,7 @@ export const EVIDENCE: Record<string, Evidence> = {
     quoteIds: [
       "play_store_d986342d5c62",
       "trustpilot_2d65878c3181",
-      "reddit_65f290a6cbe8",
+      "play_store_bca64f94c1ed",
       "play_store_772da0b31cc3",
     ],
   },

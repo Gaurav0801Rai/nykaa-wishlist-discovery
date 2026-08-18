@@ -55,7 +55,7 @@ THEME = {
     "delivery_return_friction": "Post-purchase",
 }
 CATS = ["apparel_ethnic", "footwear", "watches", "sunglasses", "bags",
-        "jewellery", "makeup_beauty", "unknown_general"]
+        "belts", "jewellery", "unknown_general"]
 
 SOURCE_GROUP = {
     "play_store": "Play Store", "app_store": "App Store", "reddit": "Reddit",
@@ -139,9 +139,9 @@ def main() -> int:
               f"({counts['competitor_comparison']}), saving without buying "
               f"({counts['bookmarking_no_intent']}) and context loss ({counts['context_loss']}).")
     md.append("")
-    md.append("**Category profiles differ.** Apparel feedback carries fit and quality doubts; beauty "
-              "feedback is led by validation-seeking and price waiting. Most items do not name a "
-              "category, so category splits describe the named ones only.")
+    md.append("**Category profiles differ.** Apparel feedback carries fit and quality doubts, while "
+              "footwear leans on sizing. Most items do not name a category, so category splits "
+              "describe the named ones only.")
     md.append("")
     md.append("Full data: `web/src/data/classified.json`. Per-item tags: `data/claude_tags*.json`. "
               "Live site: the Dashboard, Ask Assistant and Live Analyzer under `web/`.")

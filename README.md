@@ -19,8 +19,9 @@ The site has three views:
 
 ## The data
 
-276 pieces of real user feedback from the Play Store, Reddit, review forums, Q&A sites and
-community discussions. Every item was read and tagged by hand against a 15-blocker taxonomy.
+238 pieces of real user feedback about Nykaa Fashion, from the Play Store, Reddit, review
+forums, Q&A sites and community discussions. Scope is fashion only — apparel, ethnic wear,
+footwear, watches, sunglasses, bags, belts and jewellery. Every item was read and tagged by hand against a 15-blocker taxonomy.
 Tagging is multi-label, so an item can carry several blockers and percentages do not sum to
 100; items showing no blocker were left untagged rather than forced into one.
 
