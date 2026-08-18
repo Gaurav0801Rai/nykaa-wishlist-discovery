@@ -33,8 +33,8 @@ export default function Dashboard({
     "Play Store": "the Play Store",
     "App Store": "the App Store",
     Reddit: "Reddit",
-    "Web forums": "review forums",
-    Discussions: "Q&A sites",
+    "Review forums": "review forums",
+    "Q&A sites": "Q&A sites",
     "Community & web": "community discussions",
   };
   const sourceSentence = useMemo(() => {
@@ -86,14 +86,11 @@ export default function Dashboard({
       </section>
 
       <section>
-        <h2 className="h2">Reading the same data by where it happens</h2>
-        <p className="lead" style={{ marginBottom: 8 }}>
+        <h2 className="h2">Where the opportunity is</h2>
+        <p className="lead" style={{ marginBottom: 18 }}>
           Raw frequency reflects who writes reviews: people who already ordered. Re-reading the same
-          blockers by <strong>when in the journey they occur</strong> separates what shoppers say while an
-          item is still saved from what they report after an order arrived.
-        </p>
-        <p className="muted small" style={{ marginBottom: 18, maxWidth: "72ch" }}>
-          Nothing is removed — all {agg.length} blockers stay listed with their real counts.
+          blockers by <strong>when in the journey they occur</strong> separates what shoppers say while
+          an item is still saved from what they report after an order arrived.
         </p>
         <div className="grid">
           {ranked.map((r, i) => (

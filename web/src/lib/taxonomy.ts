@@ -47,16 +47,16 @@ export function sourceGroup(source: string): string {
     case "app_store": return "App Store";
     case "reddit": return "Reddit";
     case "community": return "Community & web";
-    case "quora": return "Discussions";
+    case "quora": return "Q&A sites";
     case "trustpilot":
     case "pissedconsumer":
-    case "voxya": return "Web forums";
+    case "voxya": return "Review forums";
     default: return "Other";
   }
 }
 
 export const PRIMARY_SOURCE_GROUPS = [
-  "Play Store", "App Store", "Reddit", "Web forums", "Discussions", "Community & web",
+  "Play Store", "App Store", "Reddit", "Review forums", "Q&A sites", "Community & web",
 ];
 
 export function blockerLabel(code: string): string {

@@ -4,11 +4,46 @@ import { useMemo, useState } from "react";
 import type { AnalyzeResponse } from "@/lib/types";
 import { blockerLabel, categoryLabel } from "@/lib/taxonomy";
 
-const EXAMPLE = `I keep adding kurtas to my wishlist but there are so many I can never decide which to buy.
-Ordered a watch that looked totally different from the photos — not sure I trust the listing now.
-These heels are gorgeous but I'm waiting for the sale before I commit.
-Saved this bag weeks ago and honestly forgot why — my wishlist is a mess of 40 random things.
-Not sure about the size, the chart is confusing so I left it in my wishlist.`;
+// A varied pool of realistic shopper feedback. Each "Load example" run samples a
+// different mix — delivery, quality, fit, price, comparison, browsing — so the
+// demo reads like genuine mixed feedback rather than a fixed script.
+const EXAMPLE_POOL: string[] = [
+  "Ordered a kurta for my cousin's wedding and it arrived three days after the function was over.",
+  "The fabric feels much cheaper than it looked in the pictures, honestly not worth what I paid.",
+  "Received a completely different shade from what I ordered and support keeps closing my ticket.",
+  "Return pickup has been rescheduled four times now, nobody calls before cancelling it.",
+  "Bought these sneakers after checking three other apps, Nykaa was the only one with my size.",
+  "The size chart says medium but it fits like a small, had to raise an exchange immediately.",
+  "Delivery was quick and the packaging was neat, genuinely happy with this order.",
+  "I have been eyeing this bag for two months, just waiting for a proper sale before I order.",
+  "Kitne saare options hain ki decide hi nahi kar paa rahi kaunsa lena hai.",
+  "Added around thirty things while browsing at night, next morning I could not remember why I saved half of them.",
+  "Same jacket is cheaper on Myntra, I keep switching between both apps before buying anything.",
+  "Product quality is decent but the price feels inflated compared to what you get in a store.",
+  "Wanted a watch as a birthday gift but the delivery date kept moving so I bought elsewhere.",
+  "Not sure if this brand is authentic, the stitching looks different from the brand's own site.",
+  "There are barely any customer photos on this listing so I cannot tell how it actually looks.",
+  "My saved list has become so long that I just scroll past everything and close the app.",
+  "Ordered two dresses, one fit perfectly and the other was way too tight around the shoulders.",
+  "Keep adding things to the bag and then abandoning it, I never actually check out.",
+  "Wishlist items dikhte hi nahi hain jab tak app na kholo, koi reminder bhi nahi aata.",
+  "The heels are beautiful and exactly like the photos, will definitely order again.",
+  "I asked in a group which foundation shade to pick before ordering, could not decide alone.",
+  "Item went out of stock in my size while I was still thinking about whether to buy it.",
+  "Refund has been pending for two weeks even though the courier collected the parcel.",
+  "Honestly I use the wishlist to track price drops, not because I plan to buy all of it.",
+  "Too many similar looking sarees, I gave up comparing them and did not order anything.",
+  "Good collection of accessories but I wish there were more reviews on each product.",
+];
+
+function sampleExample(n = 5): string {
+  const pool = [...EXAMPLE_POOL];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, n).join(String.fromCharCode(10));
+}
 
 const MAX = 20;
 
@@ -73,7 +108,7 @@ export default function Analyzer() {
           <button className="btn btn-primary" onClick={analyze} disabled={loading || lines.length === 0}>
             {loading ? <><span className="spinner" /> Analyzing {lines.length}…</> : `Analyze ${lines.length || ""}`}
           </button>
-          <button className="btn btn-ghost" onClick={() => setText(EXAMPLE)} disabled={loading}>Load example</button>
+          <button className="btn btn-ghost" onClick={() => setText(sampleExample())} disabled={loading}>Load example</button>
           <button className="btn btn-ghost" onClick={() => { setText(""); setData(null); setError(null); }} disabled={loading}>Clear</button>
           <span className="muted small" style={{ marginLeft: "auto" }}>{lines.length}/{MAX} lines</span>
         </div>

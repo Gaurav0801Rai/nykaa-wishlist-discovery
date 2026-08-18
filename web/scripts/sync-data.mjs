@@ -37,8 +37,8 @@ function group(s) {
   if (s === "reddit") return "Reddit";
   if (s === "play_store") return "Play Store";
   if (s === "app_store") return "App Store";
-  if (s === "quora") return "Discussions";
-  if (["trustpilot", "pissedconsumer", "voxya"].includes(s)) return "Web forums";
+  if (s === "quora") return "Q&A sites";
+  if (["trustpilot", "pissedconsumer", "voxya"].includes(s)) return "Review forums";
   return "Other";
 }
 const sources = {};

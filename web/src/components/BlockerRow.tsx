@@ -56,12 +56,18 @@ export default function BlockerRow({
       {open && (
         <div className="blk-quotes">
           {quotes.length === 0 && <p className="muted small">No quotes available.</p>}
-          {quotes.map((it) => (
-            <div className="quote" key={it.id}>
-              “{(it.supporting_quote || it.text).slice(0, 240)}”
-              <span className="src">— {sourceGroup(it.source)}{it.rating ? ` · ${it.rating}★` : ""}</span>
-            </div>
-          ))}
+          {quotes.map((it) => {
+            // Only app-store items carry a 1-5 star rating; other sources store
+            // an upvote score, which must not be rendered as stars.
+            const isStore = it.source === "play_store" || it.source === "app_store";
+            const stars = isStore && it.rating ? ` · ${it.rating}★` : "";
+            return (
+              <div className="quote" key={it.id}>
+                “{(it.supporting_quote || it.text).slice(0, 240)}”
+                <span className="src">— {sourceGroup(it.source)}{stars}</span>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>
