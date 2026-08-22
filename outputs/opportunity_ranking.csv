@@ -1,13 +1,13 @@
-rank,blocker_code,blocker,theme,items,pct_of_276
-1,delivery_return_friction,Delivery / return friction,Post-purchase,158,57.2
-2,trust_authenticity,Trust / authenticity,Confidence gap,63,22.8
-3,price_wait,Price wait,Value & timing,42,15.2
-4,quality_doubt,Quality doubt,Confidence gap,38,13.8
-5,decision_paralysis,Decision paralysis,Decision friction,30,10.9
-6,confidence_validation_gap,Confidence / validation gap,Confidence gap,23,8.3
-7,fit_size_doubt,Fit / size doubt,Confidence gap,23,8.3
-8,competitor_comparison,Competitor comparison,Decision friction,21,7.6
-9,bookmarking_no_intent,"Bookmarking, no intent",Decision friction,17,6.2
-10,context_loss,Context loss / wishlist visibility,Decision friction,15,5.4
-11,occasion_timing,Occasion / timing,Value & timing,10,3.6
-12,size_or_stock_gone,Size / stock gone,Availability,10,3.6
+rank,blocker_code,blocker,theme,items,pct_of_279
+1,delivery_return_friction,Delivery / return friction,Post-purchase,158,56.6
+2,trust_authenticity,Trust / authenticity,Confidence gap,63,22.6
+3,price_wait,Price wait,Value & timing,42,15.1
+4,quality_doubt,Quality doubt,Confidence gap,38,13.6
+5,decision_paralysis,Decision paralysis,Decision friction,33,11.8
+6,confidence_validation_gap,Confidence / validation gap,Confidence gap,23,8.2
+7,fit_size_doubt,Fit / size doubt,Confidence gap,23,8.2
+8,competitor_comparison,Competitor comparison,Decision friction,21,7.5
+9,bookmarking_no_intent,"Bookmarking, no intent",Decision friction,17,6.1
+10,context_loss,Context loss / wishlist visibility,Decision friction,17,6.1
+11,size_or_stock_gone,Size / stock gone,Availability,11,3.9
+12,occasion_timing,Occasion / timing,Value & timing,10,3.6

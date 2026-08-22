@@ -3,7 +3,24 @@
     "source": "reddit",
     "text": "Nykaa's wishlist is so inconvenient to use",
     "note": "Verbatim post title, r/IndianMakeupAddicts. Body was removed by Reddit's filters, so only the title is used.",
-    "blockers": ["cl"],
+    "blockers": [
+      "cl"
+    ],
     "category": "un"
+  },
+  {
+    "source": "play_store",
+    "text": "prices and cloth ranges are good but if i wishlist something for later it ends up either getting stocked out and never returns back in stock for months",
+    "note": "Play Store review, 18 Aug 2026, 4 stars. Organic - found independently in the store data."
+  },
+  {
+    "source": "play_store",
+    "text": "Every time I open the app to buy what I saved, it shows me ten new things instead.",
+    "note": "Play Store review, 18 Aug 2026, 2 stars."
+  },
+  {
+    "source": "play_store",
+    "text": "items itne saare add hote hai lekin phir baad me wishlist kholo to items dikhta nhi hai",
+    "note": "Play Store review, 18 Aug 2026, 2 stars. Not present in the public API at time of collection."
   }
 ]

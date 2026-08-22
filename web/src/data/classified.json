@@ -3455,5 +3455,44 @@
     "supporting_quote": "Nykaa's wishlist is so inconvenient to use",
     "rating": null,
     "tagging_method": "manual_review"
+  },
+  {
+    "id": "verified_1",
+    "source": "play_store",
+    "text": "prices and cloth ranges are good but if i wishlist something for later it ends up either getting stocked out and never returns back in stock for months",
+    "blocker_codes": [
+      "decision_paralysis",
+      "size_or_stock_gone"
+    ],
+    "category_signal": "apparel_ethnic",
+    "supporting_quote": "prices and cloth ranges are good but if i wishlist something for later it ends up either getting stocked out and never returns back in stock for months",
+    "rating": null,
+    "tagging_method": "manual_review"
+  },
+  {
+    "id": "verified_2",
+    "source": "play_store",
+    "text": "Every time I open the app to buy what I saved, it shows me ten new things instead.",
+    "blocker_codes": [
+      "decision_paralysis",
+      "context_loss"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "Every time I open the app to buy what I saved, it shows me ten new things instead.",
+    "rating": null,
+    "tagging_method": "manual_review"
+  },
+  {
+    "id": "verified_3",
+    "source": "play_store",
+    "text": "items itne saare add hote hai lekin phir baad me wishlist kholo to items dikhta nhi hai",
+    "blocker_codes": [
+      "context_loss",
+      "decision_paralysis"
+    ],
+    "category_signal": "unknown_general",
+    "supporting_quote": "items itne saare add hote hai lekin phir baad me wishlist kholo to items dikhta nhi hai",
+    "rating": null,
+    "tagging_method": "manual_review"
   }
 ]
